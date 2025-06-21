@@ -1,29 +1,33 @@
-const { Client, GatewayIntentBits, Events, REST, Routes, SlashCommandBuilder } = require('discord.js');
-const data = require('./characters.json');
+const fs = require('fs');
+const path = require('path');
+const { Client, Collection, GatewayIntentBits } = require('discord.js');
 require('dotenv').config();
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+client.commands = new Collection();
 
-client.once(Events.ClientReady, () => {
-  console.log(`ログイン成功：${client.user.tag}`);
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+for (const file of commandFiles) {
+  const command = require(`./commands/${file}`);
+  client.commands.set(command.data.name, command);
+}
+
+client.once('ready', () => {
+  console.log(`ログイン成功: ${client.user.tag}`);
 });
 
-client.on(Events.InteractionCreate, async interaction => {
+client.on('interactionCreate', async interaction => {
   if (!interaction.isChatInputCommand()) return;
 
-  if (interaction.commandName === '性能検索') {
-    const keyword = interaction.options.getString('効果');
-    const found = data.filter(c => {
-      const allText = JSON.stringify(c.skills) + JSON.stringify(c.magitools);
-      return allText.includes(keyword);
-    });
+  const command = client.commands.get(interaction.commandName);
+  if (!command) return;
 
-    if (found.length === 0) {
-      await interaction.reply('該当効果のキャラは見つかりません。');
-    } else {
-      await interaction.reply(found.map(c => c.name).join('\n'));
-    }
+  try {
+    await command.execute(interaction);
+  } catch (error) {
+    console.error(error);
+    await interaction.reply({ content: 'コマンド実行時にエラーが発生しました。', ephemeral: true });
   }
 });
 
-client.login(process.env.DISCORD_TOKEN);
+client.login(process.env.TOKEN);
