@@ -1,21 +1,42 @@
 const fs = require('fs');
 const path = require('path');
-const { Client, Collection, GatewayIntentBits } = require('discord.js');
+const { Client, Collection, GatewayIntentBits, REST, Routes } = require('discord.js');
 require('dotenv').config();
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 client.commands = new Collection();
 
+// コマンド読み込み
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+const commands = [];
+
 for (const file of commandFiles) {
   const command = require(`./commands/${file}`);
   client.commands.set(command.data.name, command);
+  commands.push(command.data.toJSON());
 }
 
+// Bot起動時
 client.once('ready', () => {
   console.log(`ログイン成功: ${client.user.tag}`);
 });
 
+// スラッシュコマンド登録（Renderなどで deploy-commands.js を別に実行できない場合）
+const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
+(async () => {
+  try {
+    console.log('スラッシュコマンドを登録中...');
+    await rest.put(
+      Routes.applicationCommands(process.env.CLIENT_ID),
+      { body: commands }
+    );
+    console.log('スラッシュコマンドの登録が完了しました！');
+  } catch (error) {
+    console.error(error);
+  }
+})();
+
+// コマンド受信時の処理
 client.on('interactionCreate', async interaction => {
   if (!interaction.isChatInputCommand()) return;
 
@@ -31,31 +52,3 @@ client.on('interactionCreate', async interaction => {
 });
 
 client.login(process.env.TOKEN);
-
-// 登録用：一時的にスラッシュコマンドを登録
-const { REST, Routes } = require('discord.js');
-const fs = require('fs');
-const commands = [];
-
-// スラッシュコマンドを読み込む（commandsディレクトリ内の.jsファイルすべて）
-const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
-for (const file of commandFiles) {
-  const command = require(`./commands/${file}`);
-  commands.push(command.data.toJSON());
-}
-
-// REST APIを使ってDiscordに登録
-const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
-
-(async () => {
-  try {
-    console.log('スラッシュコマンドを登録中...');
-    await rest.put(
-      Routes.applicationCommands(process.env.CLIENT_ID),
-      { body: commands },
-    );
-    console.log('スラッシュコマンドの登録が完了しました！');
-  } catch (error) {
-    console.error(error);
-  }
-})();
