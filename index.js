@@ -21,20 +21,32 @@ client.once('ready', () => {
   console.log(`ログイン成功: ${client.user.tag}`);
 });
 
-// スラッシュコマンド登録（Renderなどで deploy-commands.js を別に実行できない場合）
+// スラッシュコマンド登録用（ギルドIDを指定）
+const { REST, Routes } = require('discord.js');
+const fs = require('fs');
+
+const commands = [];
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+for (const file of commandFiles) {
+  const command = require(`./commands/${file}`);
+  commands.push(command.data.toJSON());
+}
+
 const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
+
 (async () => {
   try {
-    console.log('スラッシュコマンドを登録中...');
+    console.log('スラッシュコマンドを登録中（ギルド限定）...');
     await rest.put(
-      Routes.applicationCommands(process.env.CLIENT_ID),
-      { body: commands }
+      Routes.applicationGuildCommands(process.env.CLIENT_ID, process.env.GUILD_ID),
+      { body: commands },
     );
-    console.log('スラッシュコマンドの登録が完了しました！');
+    console.log('スラッシュコマンドの登録が完了しました！（即時反映）');
   } catch (error) {
     console.error(error);
   }
 })();
+
 
 // コマンド受信時の処理
 client.on('interactionCreate', async interaction => {
