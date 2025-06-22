@@ -1,9 +1,10 @@
-require('dotenv').config(); // これが必要です！
+require('dotenv').config(); // ← これ絶対いる！
 
 const { REST, Routes } = require('discord.js');
-const { clientId, guildId, token } = process.env;
 const fs = require('fs');
 const path = require('path');
+
+const { clientId, guildId, token } = process.env;
 
 const commands = [];
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
