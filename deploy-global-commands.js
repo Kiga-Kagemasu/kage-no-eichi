@@ -1,5 +1,3 @@
-console.log("読み込んだトークン:", process.env.token);
-
 const { REST, Routes } = require('discord.js');
 const { token, CLIENT_ID } = process.env;
 const fs = require('fs');
