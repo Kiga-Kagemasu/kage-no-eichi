@@ -28,9 +28,10 @@ module.exports = {
 
     const char = found[0];
     const embed = new EmbedBuilder()
-      .setTitle(`**${char.name}**`)
+      .setTitle(char.name)
       .setDescription(`属性: ${char.attribute}　ロール: ${char.role}　ポジション: ${char.position}`)
-      .setThumbnail(char.image)
+      .setColor(0x999999)
+      .setImage(char.image)  // ← setThumbnailからsetImageに変更
       .addFields(
         { name: '魔力覚醒順', value: char.awakening_order.join(" → "), inline: false },
         { name: '奥義', value: `【${char.skills["奥義"].name}】\n${char.skills["奥義"].base}\n【覚醒】${char.skills["奥義"].awakened}` },
@@ -56,4 +57,3 @@ module.exports = {
     return interaction.reply({ embeds: [embed] });
   }
 };
-
