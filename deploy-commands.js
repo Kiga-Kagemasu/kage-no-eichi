@@ -1,5 +1,5 @@
-const fs = require('fs');
 const { REST, Routes } = require('discord.js');
+const fs = require('fs');
 require('dotenv').config();
 
 const commands = [];
@@ -14,12 +14,12 @@ const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
 
 (async () => {
   try {
-    console.log('スラッシュコマンドを登録中（ギルド限定）...');
+    console.log('スラッシュコマンドをDiscordに登録中...');
     await rest.put(
-      Routes.applicationGuildCommands(process.env.CLIENT_ID, process.env.GUILD_ID),
-      { body: commands },
+      Routes.applicationGuildCommands(process.env.clientId, process.env.guildId),
+      { body: commands }
     );
-    console.log('スラッシュコマンドの登録が完了しました！（即時反映）');
+    console.log('登録完了！');
   } catch (error) {
     console.error(error);
   }
