@@ -1,26 +1,19 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const data = require('../characters.json');
 
-const tagTeams = ['イプシロン＆ベータ', 'シャドウ＆アウロラ', 'ゼータ＆デルタ']; // タッグ名の共通部分
-
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('キャラ検索')
     .setDescription('キャラクター名から性能を検索します')
     .addStringOption(option =>
       option.setName('名前')
-        .setDescription('キャラクター名または略称（「:L」「:R」指定可）')
+        .setDescription('キャラクター名または略称')
         .setRequired(true)
     ),
 
   async execute(interaction) {
-    const keywordRaw = interaction.options.getString('名前');
-    const keyword = keywordRaw.replace(/[:：]\s*/g, ':'); // コロンの揺れを吸収
-    const [base, side] = keyword.split(':'); // 「アルファ＆ベータ:L」→ ["アルファ＆ベータ", "L"]
-
-    const regex = new RegExp(base, 'i');
-
-    // タッグキャラは複数候補を返す
+    const keyword = interaction.options.getString('名前');
+    const regex = new RegExp(keyword, 'i');
     const matched = data.filter(c =>
       regex.test(c.name) || (c.aliases && c.aliases.some(alias => regex.test(alias)))
     );
@@ -29,45 +22,62 @@ module.exports = {
       return interaction.reply('該当キャラが見つかりません。');
     }
 
-    let targets = matched;
+    const embeds = [];
 
-    // L or Rなどの指定がある場合、そちらに絞る
-    if (side && ['L', 'R'].includes(side.toUpperCase())) {
-      targets = matched.filter(c => c.name.includes(`[${side.toUpperCase()}]`));
-    }
+    for (const char of matched) {
+      // タッグ判定（groupに「タッグ」がある）
+      const isTag = char.group?.includes("タッグ");
+      const isLeft = /\[L\]/.test(char.name);
+      const isRight = /\[R\]/.test(char.name);
+      const showOnlyOne = isLeft || isRight;
 
-    const embeds = targets.map(char => {
-      const embed = new EmbedBuilder()
-        .setTitle(char.name)
-        .setDescription(`属性: ${char.attribute}　ロール: ${char.role}　ポジション: ${char.position}`)
-        .setColor(0x999999)
-        .setImage(char.image)
-        .addFields(
-          { name: '魔力覚醒順', value: char.awakening_order.join(" → "), inline: false },
-          { name: '奥義', value: `【${char.skills["奥義"].name}】\n${char.skills["奥義"].base}\n【覚醒】${char.skills["奥義"].awakened}` },
-          { name: '特技1', value: `【${char.skills["特技1"].name}】\n${char.skills["特技1"].base}\n【覚醒】${char.skills["特技1"].awakened}` },
-          { name: '特技2', value: `【${char.skills["特技2"].name}】\n${char.skills["特技2"].base}\n【覚醒】${char.skills["特技2"].awakened}` },
-          { name: '特殊能力', value: `【${char.skills["特殊"].name}】\n${char.skills["特殊"].base}\n【覚醒】${char.skills["特殊"].awakened}` },
-          { name: 'コンボ', value: char.combo || '―' },
-          { name: 'グループ', value: (char.group || []).join(', ') || '―' },
-          ...(char.magitools
-            ? [
-                {
-                  name: '魔道具（通常）',
-                  value: `【${char.magitools.normal.name}】\n${char.magitools.normal.effect}`
-                },
-                {
-                  name: '魔道具（SS+）',
-                  value: `【${char.magitools.ss_plus.name}】\n${char.magitools.ss_plus.effect}`
-                }
-              ]
-            : [])
+      // すでにEmbedに追加されている場合を防ぐ
+      if (embeds.some(e => e.data.title === char.name)) continue;
+
+      const createEmbed = (c) => {
+        const embed = new EmbedBuilder()
+          .setTitle(c.name)
+          .setDescription(`属性: ${c.attribute}　ロール: ${c.role}　ポジション: ${c.position}`)
+          .setColor(0x999999)
+          .setImage(c.image)
+          .addFields(
+            { name: '魔力覚醒順', value: c.awakening_order.join(" → "), inline: false },
+            { name: '奥義', value: `【${c.skills["奥義"].name}】\n${c.skills["奥義"].base}\n【覚醒】${c.skills["奥義"].awakened}` },
+            { name: '特技1', value: `【${c.skills["特技1"].name}】\n${c.skills["特技1"].base}\n【覚醒】${c.skills["特技1"].awakened}` },
+            { name: '特技2', value: `【${c.skills["特技2"].name}】\n${c.skills["特技2"].base}\n【覚醒】${c.skills["特技2"].awakened}` },
+            { name: '特殊能力', value: `【${c.skills["特殊"].name}】\n${c.skills["特殊"].base}\n【覚醒】${c.skills["特殊"].awakened}` },
+            { name: 'コンボ', value: c.combo || '―' },
+            { name: 'グループ', value: (c.group || []).join(', ') || '―' },
+            ...(c.magitools
+              ? [
+                  {
+                    name: '魔道具（通常）',
+                    value: `【${c.magitools.normal.name}】\n${c.magitools.normal.effect}`
+                  },
+                  {
+                    name: '魔道具（SS+）',
+                    value: `【${c.magitools.ss_plus.name}】\n${c.magitools.ss_plus.effect}`
+                  }
+                ]
+              : [])
+          );
+        return embed;
+      };
+
+      if (isTag && !showOnlyOne) {
+        // もう一方のタッグ（同じidかつ[L]/[R]の逆）を探す
+        const pair = data.find(c =>
+          c.id === char.id &&
+          c.name !== char.name &&
+          c.group?.includes("タッグ")
         );
-
-      return embed;
-    });
+        embeds.push(createEmbed(char));
+        if (pair) embeds.push(createEmbed(pair));
+      } else {
+        embeds.push(createEmbed(char));
+      }
+    }
 
     return interaction.reply({ embeds });
   }
 };
-
