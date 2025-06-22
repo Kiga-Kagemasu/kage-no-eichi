@@ -22,18 +22,31 @@ module.exports = {
       return interaction.reply('該当キャラが見つかりません。');
     }
 
-    // 複数マッチした場合は名前だけ返す
     if (found.length > 1) {
       return interaction.reply(found.map(c => c.name).join('\n'));
     }
 
     const char = found[0];
+
+    const skillText = char.skills
+      ? Object.entries(char.skills).map(([key, val]) =>
+          `\n- ${key}: ${val.name}`
+        ).join('')
+      : 'なし';
+
+    const magitoolText = char.magitools
+      ? Object.entries(char.magitools).map(([key, val]) =>
+          `\n- ${key}: ${val.name}`
+        ).join('')
+      : 'なし';
+
     const description = `**${char.name}**
 属性: ${char.attribute} / ロール: ${char.role} / ポジション: ${char.position}
-スキル: ${char.skills?.map(s => `\n- ${s}`).join('')}
-魔道具: ${char.magitools?.map(m => `\n- ${m}`).join('')}
+スキル:${skillText}
+魔道具:${magitoolText}
 `;
 
     return interaction.reply(description);
   }
 };
+
