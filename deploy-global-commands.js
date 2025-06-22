@@ -1,3 +1,13 @@
+require('dotenv').config();
+
+console.log("TOKEN:", process.env.token);
+console.log("CLIENT_ID:", process.env.CLIENT_ID);
+
+if (!process.env.token || !process.env.CLIENT_ID) {
+  console.error("❌ token または CLIENT_ID が undefined です。");
+  process.exit(1); // 強制終了
+}
+
 const { REST, Routes } = require('discord.js');
 const { token, CLIENT_ID } = process.env;
 const fs = require('fs');
