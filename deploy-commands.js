@@ -1,6 +1,3 @@
-console.log("読み込んだトークン:", process.env.token);
-
-
 require('dotenv').config(); // これが必要です！
 
 const { REST, Routes } = require('discord.js');
