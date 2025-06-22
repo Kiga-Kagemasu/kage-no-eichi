@@ -426,6 +426,50 @@
       }
     },
     "combo": "コンボボーナスに応じて、味方全体のHPを5.00%～50.00%回復+100.00%のダメージ",
+    "group": ["エルフ", "シャドウガーデン", "七陰", "獣人"],
+    "magitools": {
+      "normal": {
+        "name": "ギャンブルソード",
+        "effect": "WAVE開始時、自分に60秒間『グループ追加(獣人)』を付与し、さらに『オーバーヒール』を30%アップ(永続)＋味方全体の回復量補正を60秒間編成されている獣人の数×5%アップ"
+      },
+      "ss_plus": {
+        "name": "",
+        "effect": ""
+      }
+    },
+    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/20250417_015004870.jpeg?v=1750419976460"
+  },
+  {
+    "id": "alpha10",
+    "name": "",
+    "aliases": [""],
+    "attribute": "",
+    "role": "",
+    "position": ,
+    "awakening_order": ["", "", "", "", ""],
+    "skills": {
+      "奥義": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      },
+      "特技1": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      },
+      "特技2": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      },
+      "特殊": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      }
+    },
+    "combo": "",
     "group": [""],
     "magitools": {
       "normal": {
@@ -437,7 +481,7 @@
         "effect": ""
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/20250417_015004870.jpeg?v=1750419976460"
-  }
+    "image": ""
+  },
 
 ]
