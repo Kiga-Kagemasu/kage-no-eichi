@@ -438,50 +438,5 @@
       }
     },
     "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/20250417_015004870.jpeg?v=1750419976460"
-  },
-  {
-    "id": "alpha10",
-    "name": "",
-    "aliases": [""],
-    "attribute": "",
-    "role": "",
-    "position": ,
-    "awakening_order": ["", "", "", "", ""],
-    "skills": {
-      "奥義": {
-        "name": "",
-        "base": "",
-        "awakened": ""
-      },
-      "特技1": {
-        "name": "",
-        "base": "",
-        "awakened": ""
-      },
-      "特技2": {
-        "name": "",
-        "base": "",
-        "awakened": ""
-      },
-      "特殊": {
-        "name": "",
-        "base": "",
-        "awakened": ""
-      }
-    },
-    "combo": "",
-    "group": [""],
-    "magitools": {
-      "normal": {
-        "name": "",
-        "effect": ""
-      },
-      "ss_plus": {
-        "name": "",
-        "effect": ""
-      }
-    },
-    "image": ""
-  },
-
+  }
 ]
