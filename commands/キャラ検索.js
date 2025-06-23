@@ -50,7 +50,7 @@ module.exports = {
         if (c.awakening_order.includes("通常") && c["通常"]) {
           embed.addFields({
             name: '通常',
-            value: `【${c["通常"].name}】\n${c["通常"].base}\n【覚醒】${c["通常"].awakened}`
+            value: `【${c.skills["通常"].name}】\n${c.skills["通常"].base}\n【覚醒】${c.skills["通常"].awakened}`
           });
         }
 
