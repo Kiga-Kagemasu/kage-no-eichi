@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 // 環境変数チェック
-const token = process.env.token;
+const token = process.env.DISCORD_TOKEN;
 const clientId = process.env.CLIENT_ID;
 
 console.log("=== 環境変数の読み取り ===");
