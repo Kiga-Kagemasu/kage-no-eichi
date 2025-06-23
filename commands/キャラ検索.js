@@ -25,13 +25,12 @@ module.exports = {
     const embeds = [];
 
     for (const char of matched) {
-      // タッグ判定（groupに「タッグ」がある）
       const isTag = char.group?.includes("タッグ");
       const isLeft = /\[L\]/.test(char.name);
       const isRight = /\[R\]/.test(char.name);
       const showOnlyOne = isLeft || isRight;
 
-      // すでにEmbedに追加されている場合を防ぐ
+      // すでに追加済みのキャラを省く
       if (embeds.some(e => e.data.title === char.name)) continue;
 
       const createEmbed = (c) => {
@@ -47,25 +46,36 @@ module.exports = {
             { name: '特技2', value: `【${c.skills["特技2"].name}】\n${c.skills["特技2"].base}\n【覚醒】${c.skills["特技2"].awakened}` },
             { name: '特殊能力', value: `【${c.skills["特殊"].name}】\n${c.skills["特殊"].base}\n【覚醒】${c.skills["特殊"].awakened}` },
             { name: 'コンボ', value: c.combo || '―' },
-            { name: 'グループ', value: (c.group || []).join(', ') || '―' },
-            ...(c.magitools
-              ? [
-                  {
-                    name: '魔道具（通常）',
-                    value: `【${c.magitools.normal.name}】\n${c.magitools.normal.effect}`
-                  },
-                  {
-                    name: '魔道具（SS+）',
-                    value: `【${c.magitools.ss_plus.name}】\n${c.magitools.ss_plus.effect}`
-                  }
-                ]
-              : [])
+            { name: 'グループ', value: (c.group || []).join(', ') || '―' }
           );
+
+        if (c.magitools) {
+          // 魔道具（通常①）
+          if (c.magitools.normal && c.magitools.normal.name) {
+            embed.addFields({
+              name: '魔道具①',
+              value: `【${c.magitools.normal.name}】\n${c.magitools.normal.effect}`
+            });
+          }
+          // 魔道具（通常②：魔人化キャラ向け）
+          if (c.magitools.normal2 && c.magitools.normal2.name) {
+            embed.addFields({
+              name: '魔道具②',
+              value: `【${c.magitools.normal2.name}】\n${c.magitools.normal2.effect}`
+            });
+          } else if (c.magitools.ss_plus && c.magitools.ss_plus.name) {
+            // SS+魔道具（通常キャラ向け）
+            embed.addFields({
+              name: '魔道具（SS+）',
+              value: `【${c.magitools.ss_plus.name}】\n${c.magitools.ss_plus.effect}`
+            });
+          }
+        }
+
         return embed;
       };
 
       if (isTag && !showOnlyOne) {
-        // もう一方のタッグ（同じidかつ[L]/[R]の逆）を探す
         const pair = data.find(c =>
           c.id === char.id &&
           c.name !== char.name &&
