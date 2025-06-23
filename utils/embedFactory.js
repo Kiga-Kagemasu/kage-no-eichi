@@ -25,7 +25,6 @@ module.exports = { createCharacterListEmbed };
 // 📁 commands/名前検索.js
 const { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const data = require('../characters.json');
-const { createCharacterListEmbed } = require('../utils/embedFactory');
 
 module.exports = {
   data: new SlashCommandBuilder()
