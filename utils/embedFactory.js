@@ -1,22 +1,22 @@
 const { EmbedBuilder } = require('discord.js');
 
-function generatePaginatedEmbeds(characters, pageSize = 10) {
-  const embeds = [];
-  for (let i = 0; i < characters.length; i += pageSize) {
-    const current = characters.slice(i, i + pageSize);
-    const embed = new EmbedBuilder()
-      .setTitle(`🔍 名前に一致するキャラ一覧`)
-      .setDescription(
-        current.map((c, index) => `${i + index + 1}. ${c.name}`).join('\n')
-      )
-      .setColor(0x888888)
-      .setFooter({ text: `全${characters.length}件中 ${i + 1}〜${i + current.length}件を表示` });
+function createCharacterListEmbed(characters, page = 0, keyword = '') {
+  const pageSize = 10;
+  const start = page * pageSize;
+  const end = start + pageSize;
+  const total = characters.length;
+  const totalPages = Math.ceil(total / pageSize);
 
-    embeds.push(embed);
-  }
-  return embeds;
+  const sliced = characters.slice(start, end);
+  const list = sliced.map((c, i) => `${start + i + 1}. ${c.name}`).join('\n') || '該当キャラなし';
+
+  const embed = new EmbedBuilder()
+    .setTitle(`🔍 名前に「${keyword}」を含むキャラ一覧`)
+    .setDescription(list)
+    .setFooter({ text: `ページ ${page + 1} / ${totalPages}` })
+    .setColor(0x888888);
+
+  return embed;
 }
 
-module.exports = {
-  generatePaginatedEmbeds,
-};
+module.exports = { createCharacterListEmbed };
