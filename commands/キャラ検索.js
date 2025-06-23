@@ -46,8 +46,8 @@ module.exports = {
             { name: '特殊能力', value: `【${c.skills["特殊"].name}】\n${c.skills["特殊"].base}\n【覚醒】${c.skills["特殊"].awakened}` }
           );
 
-        // 「通常」が魔力覚醒順に含まれるキャラのみ
-        if (c.awakening_order.includes("通常") && c["通常"]) {
+        // 通常スキル（魔人化キャラなど）の表示
+        if (c.awakening_order.includes("通常") && c.skills["通常"]) {
           embed.addFields({
             name: '通常',
             value: `【${c.skills["通常"].name}】\n${c.skills["通常"].base}\n【覚醒】${c.skills["通常"].awakened}`
@@ -59,6 +59,7 @@ module.exports = {
           { name: 'グループ', value: (c.group || []).join(', ') || '―' }
         );
 
+        // 魔道具の表示
         if (c.magitools) {
           if (c.magitools.normal && c.magitools.normal.name) {
             embed.addFields({
