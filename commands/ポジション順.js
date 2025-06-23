@@ -7,13 +7,25 @@ module.exports = {
     .setDescription('ポジション値が高い順にキャラを表示')
     .addStringOption(option =>
       option.setName('属性')
-        .setDescription('属性で絞り込み（例: 青, 赤, 緑）')
+        .setDescription('属性で絞り込み')
         .setRequired(false)
+        .addChoices(
+          { name: '青', value: '青' },
+          { name: '赤', value: '赤' },
+          { name: '緑', value: '緑' },
+          { name: '黄', value: '黄' },
+          { name: '紫', value: '紫' }
+        )
     )
     .addStringOption(option =>
       option.setName('ロール')
-        .setDescription('ロールで絞り込み（例: タンク, アタッカー）')
+        .setDescription('ロールで絞り込み')
         .setRequired(false)
+        .addChoices(
+          { name: 'アタッカー', value: 'アタッカー' },
+          { name: 'タンク', value: 'タンク' },
+          { name: 'サポーター', value: 'サポーター' }
+        )
     )
     .addStringOption(option =>
       option.setName('名前')
@@ -24,7 +36,7 @@ module.exports = {
   async execute(interaction) {
     const attr = interaction.options.getString('属性');
     const role = interaction.options.getString('ロール');
-    const name = interaction.options.getString('名前');
+    const name = interaction.options.getString('名前')?.trim();
 
     let filtered = data.filter(c => typeof c.position === 'number');
 
@@ -51,7 +63,6 @@ module.exports = {
     }
 
     const result = sorted.map(c => `${c.name}（${c.position}）`).join('\n');
-
-    await interaction.reply(result.slice(0, 2000)); // Discordの文字数制限に対応
+    await interaction.reply(result.slice(0, 2000)); // Discordの文字数制限対策
   }
 };
