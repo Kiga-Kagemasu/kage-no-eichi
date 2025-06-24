@@ -106,7 +106,12 @@ client.on('interactionCreate', async interaction => {
           embeds.push(createEmbed(character));
         }
 
-        await interaction.update({ content: '性能を表示しました。', embeds, components: [] });
+        await interaction.update({
+         content: '性能を表示しました。',
+         embeds,
+         components: []
+        });
+
       }
     }
   } catch (err) {
