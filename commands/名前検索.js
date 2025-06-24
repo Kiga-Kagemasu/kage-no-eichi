@@ -61,23 +61,23 @@ module.exports = {
       const collector = message.createMessageComponentCollector({ time: 60000 });
 
       collector.on('collect', async i => {
-        if (i.user.id !== interaction.user.id) {
-          return await i.reply({
-            content: 'このボタンはあなた専用です。',
-            flags: 64
-          });
-        }
+  if (i.user.id !== interaction.user.id) {
+    return await i.reply({
+      content: 'このボタンはあなた専用です。',
+      flags: 64
+    });
+  }
 
-        await i.deferUpdate();
+  await i.deferUpdate(); // ✅ 必須！
 
-        if (i.customId === 'prev' && page > 0) page--;
-        else if (i.customId === 'next' && page < maxPage) page++;
+  if (i.customId === 'prev' && page > 0) page--;
+  else if (i.customId === 'next' && page < maxPage) page++;
 
-        await i.editReply({
-          embeds: [getEmbed()],
-          components: [row()]
-        });
-      });
+  await i.editReply({
+    embeds: [getEmbed()],
+    components: [row()]
+  });
+});
 
       collector.on('end', async () => {
         try {
