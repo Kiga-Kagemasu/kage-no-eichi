@@ -1,12 +1,14 @@
 const fs = require('fs');
 const path = require('path');
 const { Client, Collection, GatewayIntentBits } = require('discord.js');
-const { token } = require('./config.json');
 const characters = require('./characters.json');
 const { generateCharacterEmbed } = require('./embedFactory');
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 client.commands = new Collection();
+
+// .envから読み込み（Renderでは環境変数に設定してある前提）
+const token = process.env.DISCORD_TOKEN;
 
 const commandsPath = path.join(__dirname, 'commands');
 const commandFiles = fs.readdirSync(commandsPath).filter(f => f.endsWith('.js'));
@@ -36,7 +38,6 @@ client.on('interactionCreate', async interaction => {
     }
   }
 
-  // ▼選択メニュー応答処理（15秒内に返す必要あり）
   if (interaction.isStringSelectMenu() && interaction.customId === 'select_character') {
     const charId = interaction.values[0];
     const character = characters.find(c => c.id === charId || c.name === charId);
