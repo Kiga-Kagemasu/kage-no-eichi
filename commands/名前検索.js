@@ -17,7 +17,7 @@ module.exports = {
     ),
 
   async execute(interaction) {
-    await interaction.deferReply({ ephemeral: true });
+    await interaction.deferReply();
 
     const keyword = interaction.options.getString('キーワード');
     const regex = new RegExp(keyword, 'i');
