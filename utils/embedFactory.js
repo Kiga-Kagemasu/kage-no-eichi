@@ -1,22 +1,20 @@
 const { EmbedBuilder } = require('discord.js');
 
-function createCharacterListEmbed(characters, page = 0, keyword = '') {
-  const pageSize = 10;
-  const start = page * pageSize;
-  const end = start + pageSize;
-  const total = characters.length;
-  const totalPages = Math.ceil(total / pageSize);
-
-  const sliced = characters.slice(start, end);
-  const list = sliced.map((c, i) => `${start + i + 1}. ${c.name}`).join('\n') || '該当キャラなし';
-
+function generateCharacterEmbed(char) {
   const embed = new EmbedBuilder()
-    .setTitle(`🔍 名前に「${keyword}」を含むキャラ一覧`)
-    .setDescription(list)
-    .setFooter({ text: `ページ ${page + 1} / ${totalPages}` })
-    .setColor(0x888888);
+    .setTitle(`${char.name} の性能`)
+    .setColor(0x99ccff)
+    .setDescription(char.description || '（説明なし）');
+
+  if (char.attribute) embed.addFields({ name: '属性', value: char.attribute, inline: true });
+  if (char.role) embed.addFields({ name: 'ロール', value: char.role, inline: true });
+  if (char.position !== undefined) embed.addFields({ name: 'ポジション', value: String(char.position), inline: true });
+
+  if (char.skills) {
+    embed.addFields({ name: 'スキル', value: char.skills.join('\n') });
+  }
 
   return embed;
 }
 
-module.exports = { createCharacterListEmbed };
+module.exports = { generateCharacterEmbed };
