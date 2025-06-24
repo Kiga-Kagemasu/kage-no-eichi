@@ -20,10 +20,14 @@ module.exports = {
     );
 
     if (matched.length === 0) {
-      return await interaction.reply({ content: '該当するキャラが見つかりませんでした。', ephemeral: true });
+      // ✅ flagsを使って ephemeral に（非推奨ワーニング回避）
+      return await interaction.reply({
+        content: '該当するキャラが見つかりませんでした。',
+        flags: 64 // 64 = ephemeral
+      });
     }
 
-    await interaction.deferReply(); // 処理中表示
+    await interaction.deferReply(); // ✅ 処理中応答（最大15分有効）
 
     const perPage = 10;
     let page = 0;
@@ -56,7 +60,7 @@ module.exports = {
 
     collector.on('collect', async i => {
       if (i.user.id !== interaction.user.id) {
-        return await i.reply({ content: 'このボタンはあなたの操作専用です。', ephemeral: true });
+        return await i.reply({ content: 'このボタンはあなた専用です。', flags: 64 });
       }
 
       await i.deferUpdate();
