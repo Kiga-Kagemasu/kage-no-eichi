@@ -16,26 +16,23 @@ module.exports = {
     ),
 
   async execute(interaction) {
-    const keyword = interaction.options.getString('キーワード');
-    const regex = new RegExp(keyword, 'i');
+    try {
+      const keyword = interaction.options.getString('キーワード');
+      const regex = new RegExp(keyword, 'i');
 
-    const matched = data.filter(c =>
-      regex.test(c.name) || (c.aliases && c.aliases.some(alias => regex.test(alias)))
-    );
+      const matched = data.filter(c =>
+        regex.test(c.name) || (c.aliases && c.aliases.some(alias => regex.test(alias)))
+      );
 
-    if (matched.length === 0) {
-      if (!interaction.deferred && !interaction.replied) {
+      if (matched.length === 0) {
         return await interaction.reply({
-          content: '該当キャラが見つかりません。',
-          ephemeral: true
+          content: '該当キャラが見つかりませんでした。',
+          flags: 64 // ephemeral: true の代わり
         });
       }
-      return;
-    }
 
-    try {
-      // ✅ 即 defer（インタラクション保持）
-      await interaction.deferReply({ ephemeral: false });
+      // インタラクションの応答（遅延防止）
+      await interaction.deferReply();
 
       const limited = matched.slice(0, 25);
       const menu = new StringSelectMenuBuilder()
@@ -48,16 +45,26 @@ module.exports = {
 
       const row = new ActionRowBuilder().addComponents(menu);
 
-      // ✅ editReply で返す（deferした後）
       await interaction.editReply({
-        content: 'キャラクターを選択してください：',
+        content: 'キャラを選んでください：',
         components: [row]
       });
 
     } catch (err) {
       console.error('❌ 名前検索中にエラー:', err);
-      if (interaction.deferred && !interaction.replied) {
-        await interaction.editReply({ content: 'エラーが発生しました。' });
+      try {
+        if (!interaction.replied && !interaction.deferred) {
+          await interaction.reply({
+            content: 'エラーが発生しました。',
+            flags: 64
+          });
+        } else if (interaction.deferred && !interaction.replied) {
+          await interaction.editReply({
+            content: 'エラーが発生しました。'
+          });
+        }
+      } catch (err2) {
+        console.error('❌ エラーレスポンス失敗:', err2);
       }
     }
   }
