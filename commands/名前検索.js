@@ -24,15 +24,17 @@ module.exports = {
     );
 
     if (matched.length === 0) {
-      // ⚠️ エラーハンドリングも最初に！応答がない場合のみ reply()
       if (!interaction.deferred && !interaction.replied) {
-        return interaction.reply({ content: '該当キャラが見つかりません。', ephemeral: true });
+        return await interaction.reply({
+          content: '該当キャラが見つかりません。',
+          ephemeral: true
+        });
       }
       return;
     }
 
     try {
-      // ✅ すぐに deferReply（インタラクションを確保する）
+      // ✅ 即 defer（インタラクション保持）
       await interaction.deferReply({ ephemeral: false });
 
       const limited = matched.slice(0, 25);
@@ -46,7 +48,7 @@ module.exports = {
 
       const row = new ActionRowBuilder().addComponents(menu);
 
-      // ✅ 編集で応答（deferした後なので editReply を使う）
+      // ✅ editReply で返す（deferした後）
       await interaction.editReply({
         content: 'キャラクターを選択してください：',
         components: [row]
@@ -54,7 +56,6 @@ module.exports = {
 
     } catch (err) {
       console.error('❌ 名前検索中にエラー:', err);
-      // ❗ すでにdeferReply済みなので、editReplyでエラー通知（replyしない！）
       if (interaction.deferred && !interaction.replied) {
         await interaction.editReply({ content: 'エラーが発生しました。' });
       }
