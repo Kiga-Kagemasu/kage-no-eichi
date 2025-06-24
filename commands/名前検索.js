@@ -16,40 +16,44 @@ module.exports = {
     ),
 
   async execute(interaction) {
+    const keyword = interaction.options.getString('キーワード');
+    const regex = new RegExp(keyword, 'i');
+
+    // インタラクションのタイムアウトを避けるため、最初に deferReply（3秒以内）
+    let replied = false;
     try {
-      const keyword = interaction.options.getString('キーワード');
-      const regex = new RegExp(keyword, 'i');
-
-      // deferは最初に入れてタイムアウト防止（reply前提で後出ししない）
       await interaction.deferReply({ ephemeral: false });
+      replied = true;
+    } catch (err) {
+      console.error('❌ deferReply失敗:', err);
+      return; // 応答不可能になっているので処理中止
+    }
 
+    try {
       const matched = data.filter(c =>
         regex.test(c.name) || (c.aliases && c.aliases.some(alias => regex.test(alias)))
       );
 
-      // 同一IDのキャラは1件のみ選択肢に（タッグ2体 → 1件）
+      // 同じIDのキャラは1件に絞る（タッグ対策）
       const uniqueMap = new Map();
-      for (const char of matched) {
-        if (!uniqueMap.has(char.id)) {
-          uniqueMap.set(char.id, char);
+      for (const c of matched) {
+        if (!uniqueMap.has(c.id)) {
+          uniqueMap.set(c.id, c);
         }
       }
 
       const limited = Array.from(uniqueMap.values()).slice(0, 25);
-
       if (limited.length === 0) {
         return await interaction.editReply('該当キャラが見つかりませんでした。');
       }
 
-      const options = limited.map(c => ({
-        label: c.name.replace(/\[.\]$/, '').slice(0, 100), // シャドロラ[L]/[R] → シャドロラ
-        value: c.id
-      }));
-
       const menu = new StringSelectMenuBuilder()
         .setCustomId('select_character')
         .setPlaceholder('キャラを選択してください')
-        .addOptions(options);
+        .addOptions(limited.map(c => ({
+          label: c.name.replace(/\[.\]$/, '').slice(0, 100), // シャドロラ[L] → シャドロラ
+          value: c.id
+        })));
 
       const row = new ActionRowBuilder().addComponents(menu);
 
@@ -60,19 +64,25 @@ module.exports = {
 
     } catch (err) {
       console.error('❌ 名前検索中にエラー:', err);
-      try {
-        if (!interaction.replied && !interaction.deferred) {
-          await interaction.reply({
-            content: 'エラーが発生しました。',
-            ephemeral: true
-          });
-        } else if (interaction.deferred && !interaction.replied) {
+
+      // 応答可能な状態か確認して処理
+      if (replied) {
+        try {
           await interaction.editReply({
             content: 'エラーが発生しました。'
           });
+        } catch (err2) {
+          console.error('❌ editReplyも失敗:', err2);
         }
-      } catch (err2) {
-        console.error('❌ エラーレスポンス失敗:', err2);
+      } else {
+        try {
+          await interaction.reply({
+            content: 'エラーが発生しました。',
+            flags: 64
+          });
+        } catch (err3) {
+          console.error('❌ replyも失敗:', err3);
+        }
       }
     }
   }
