@@ -29,16 +29,16 @@ client.on('interactionCreate', async interaction => {
     } else if (interaction.isStringSelectMenu()) {
       if (interaction.customId === 'select_character') {
         const charId = interaction.values[0];
-        const character = characters.find(c => c.id === charId || c.name === charId);
+        const character = characters.find(c => c.id === charId && (!/\[L\]|\[R\]/.test(c.name) || c.name.includes(interaction.values[0])));
+
         if (!character) {
           return await interaction.update({
             content: 'キャラが見つかりませんでした。',
             components: [],
-            ephemeral: true
+            flags: 64
           });
         }
 
-        // Embed生成関数
         const createEmbed = (c) => {
           const embed = new EmbedBuilder()
             .setTitle(c.name)
@@ -93,25 +93,22 @@ client.on('interactionCreate', async interaction => {
         const isRight = /\[R\]/.test(character.name);
         const showOnlyOne = isLeft || isRight;
 
-        const embeds = [];
+        const embeds = [createEmbed(character)];
+
         if (isTag && !showOnlyOne) {
           const pair = characters.find(c =>
             c.id === character.id &&
             c.name !== character.name &&
             c.group?.includes("タッグ")
           );
-          embeds.push(createEmbed(character));
           if (pair) embeds.push(createEmbed(pair));
-        } else {
-          embeds.push(createEmbed(character));
         }
 
         await interaction.update({
-         content: '性能を表示しました。',
-         embeds,
-         components: []
+          content: '性能を表示しました。',
+          embeds,
+          components: []
         });
-
       }
     }
   } catch (err) {
@@ -120,7 +117,7 @@ client.on('interactionCreate', async interaction => {
       if (!interaction.replied && !interaction.deferred) {
         await interaction.reply({
           content: 'コマンド実行中にエラーが発生しました。',
-          ephemeral: true
+          flags: 64 // ephemeral: true
         });
       }
     } catch (err2) {
