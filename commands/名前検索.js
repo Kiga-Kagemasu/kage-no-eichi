@@ -1,4 +1,10 @@
-const { SlashCommandBuilder, StringSelectMenuBuilder, StringSelectMenuOptionBuilder, ActionRowBuilder, EmbedBuilder } = require('discord.js');
+const {
+  SlashCommandBuilder,
+  StringSelectMenuBuilder,
+  StringSelectMenuOptionBuilder,
+  ActionRowBuilder,
+  EmbedBuilder,
+} = require('discord.js');
 const data = require('../characters.json');
 
 module.exports = {
@@ -7,45 +13,58 @@ module.exports = {
     .setDescription('キャラ名または略称から検索して1体選んで表示'),
 
   async execute(interaction) {
+    await interaction.deferReply({ ephemeral: true });
+
     const options = data.map(c =>
       new StringSelectMenuOptionBuilder()
-        .setLabel(c.name.length > 100 ? c.name.slice(0, 100) : c.name)
+        .setLabel(c.name.slice(0, 100))
         .setValue(c.id)
     );
 
     const menu = new StringSelectMenuBuilder()
       .setCustomId('character_select')
       .setPlaceholder('キャラを選択')
-      .addOptions(options.slice(0, 25)); // Discordの上限
+      .addOptions(options.slice(0, 25));
 
     const row = new ActionRowBuilder().addComponents(menu);
 
-    await interaction.reply({
+    await interaction.editReply({
       content: 'キャラクターを選んでください：',
       components: [row],
-      ephemeral: true, // ユーザーにのみ見えるように
     });
 
     const collector = interaction.channel.createMessageComponentCollector({
       filter: i => i.customId === 'character_select' && i.user.id === interaction.user.id,
       time: 60_000,
-      max: 1
+      max: 1,
     });
 
     collector.on('collect', async selectInteraction => {
       const selectedId = selectInteraction.values[0];
       const character = data.find(c => c.id === selectedId);
       if (!character) {
-        return selectInteraction.update({ content: 'キャラが見つかりませんでした。', components: [] });
+        return selectInteraction.update({ content: 'キャラが見つかりません。', components: [] });
       }
 
       const embed = createCharacterEmbed(character);
-      await selectInteraction.update({ content: 'こちらが選択したキャラの性能です：', embeds: [embed], components: [] });
+      await selectInteraction.update({
+        content: '選択したキャラの性能はこちら：',
+        embeds: [embed],
+        components: [],
+      });
     });
 
-    collector.on('end', collected => {
+    collector.on('end', async collected => {
       if (collected.size === 0) {
-        interaction.editReply({ content: 'タイムアウトしました。再度コマンドを実行してください。', components: [] });
+        try {
+          await interaction.editReply({
+            content: '⏱ タイムアウトしました。再度コマンドを実行してください。',
+            components: [],
+          });
+        } catch (err) {
+          // 応答済みエラー回避
+          console.warn('Edit after timeout failed:', err.message);
+        }
       }
     });
   },
@@ -78,18 +97,18 @@ function createCharacterEmbed(c) {
   );
 
   if (c.magitools) {
-    if (c.magitools.normal && c.magitools.normal.name) {
+    if (c.magitools.normal?.name) {
       embed.addFields({
         name: '魔道具①',
         value: `【${c.magitools.normal.name}】\n${c.magitools.normal.effect}`
       });
     }
-    if (c.magitools.normal2 && c.magitools.normal2.name) {
+    if (c.magitools.normal2?.name) {
       embed.addFields({
         name: '魔道具②',
         value: `【${c.magitools.normal2.name}】\n${c.magitools.normal2.effect}`
       });
-    } else if (c.magitools.ss_plus && c.magitools.ss_plus.name && c.magitools.ss_plus.name !== "未実装") {
+    } else if (c.magitools.ss_plus?.name && c.magitools.ss_plus.name !== "未実装") {
       embed.addFields({
         name: '魔道具（SS+）',
         value: `【${c.magitools.ss_plus.name}】\n${c.magitools.ss_plus.effect}`
