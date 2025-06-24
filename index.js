@@ -8,7 +8,7 @@ client.commands = new Collection();
 
 const token = process.env.DISCORD_TOKEN;
 
-// スラッシュコマンド読み込み
+// コマンド読み込み
 const commandsPath = path.join(__dirname, 'commands');
 const commandFiles = fs.readdirSync(commandsPath).filter(f => f.endsWith('.js'));
 for (const file of commandFiles) {
@@ -22,26 +22,27 @@ client.once('ready', () => {
 
 client.on('interactionCreate', async interaction => {
   try {
+    // スラッシュコマンド
     if (interaction.isChatInputCommand()) {
       const command = client.commands.get(interaction.commandName);
       if (!command) return;
       await command.execute(interaction);
     }
 
-    if (interaction.isStringSelectMenu() && interaction.customId === 'select_character') {
+    // セレクトメニュー選択時
+    else if (interaction.isStringSelectMenu() && interaction.customId === 'select_character') {
       const charId = interaction.values[0];
-      const character = characters.find(c => c.id === charId || c.name === charId);
-      if (!character) {
+      const char = characters.find(c => c.id === charId || c.name === charId);
+      if (!char) {
         return await interaction.update({
-          content: 'キャラが見つかりませんでした。',
+          content: '選択されたキャラが見つかりません。',
           components: []
         });
       }
 
-      // キャラ詳細Embedをここで直接生成（generateCharacterEmbedは不要）
-      const isTag = character.group?.includes("タッグ");
-      const isLeft = /\[L\]/.test(character.name);
-      const isRight = /\[R\]/.test(character.name);
+      const isTag = char.group?.includes("タッグ");
+      const isLeft = /\[L\]/.test(char.name);
+      const isRight = /\[R\]/.test(char.name);
       const showOnlyOne = isLeft || isRight;
 
       const createEmbed = (c) => {
@@ -97,14 +98,14 @@ client.on('interactionCreate', async interaction => {
 
       if (isTag && !showOnlyOne) {
         const pair = characters.find(c =>
-          c.id === character.id &&
-          c.name !== character.name &&
+          c.id === char.id &&
+          c.name !== char.name &&
           c.group?.includes("タッグ")
         );
-        embeds.push(createEmbed(character));
+        embeds.push(createEmbed(char));
         if (pair) embeds.push(createEmbed(pair));
       } else {
-        embeds.push(createEmbed(character));
+        embeds.push(createEmbed(char));
       }
 
       await interaction.update({
@@ -113,18 +114,17 @@ client.on('interactionCreate', async interaction => {
         components: []
       });
     }
-
   } catch (err) {
     console.error('❌ interactionCreate中にエラー:', err);
     try {
       if (interaction.replied || interaction.deferred) {
         await interaction.followUp({
-          content: 'コマンド実行中にエラーが発生しました。',
+          content: 'エラーが発生しました。',
           ephemeral: true
         });
       } else {
         await interaction.reply({
-          content: 'コマンド実行中にエラーが発生しました。',
+          content: 'エラーが発生しました。',
           ephemeral: true
         });
       }
