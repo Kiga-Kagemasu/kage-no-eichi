@@ -1,3 +1,4 @@
+require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
 const { Client, Collection, GatewayIntentBits, EmbedBuilder } = require('discord.js');
@@ -5,7 +6,6 @@ const characters = require('./characters.json');
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 client.commands = new Collection();
-
 const token = process.env.DISCORD_TOKEN;
 
 // コマンド読み込み
@@ -22,27 +22,32 @@ client.once('ready', () => {
 
 client.on('interactionCreate', async interaction => {
   try {
-    // スラッシュコマンド
+    // ✅ スラッシュコマンド実行
     if (interaction.isChatInputCommand()) {
       const command = client.commands.get(interaction.commandName);
       if (!command) return;
+
       await command.execute(interaction);
     }
 
-    // セレクトメニュー選択時
-    else if (interaction.isStringSelectMenu() && interaction.customId === 'select_character') {
+    // ✅ セレクトメニュー：キャラ詳細表示
+    else if (interaction.isStringSelectMenu()) {
+      if (interaction.customId !== 'select_character') return;
+
       const charId = interaction.values[0];
-      const char = characters.find(c => c.id === charId || c.name === charId);
-      if (!char) {
-        return await interaction.update({
-          content: '選択されたキャラが見つかりません。',
-          components: []
+      const character = characters.find(c => c.id === charId || c.name === charId);
+      if (!character) {
+        await interaction.update({
+          content: 'キャラが見つかりませんでした。',
+          components: [],
         });
+        return;
       }
 
-      const isTag = char.group?.includes("タッグ");
-      const isLeft = /\[L\]/.test(char.name);
-      const isRight = /\[R\]/.test(char.name);
+      // タッグキャラ判定
+      const isTag = character.group?.includes("タッグ");
+      const isLeft = /\[L\]/.test(character.name);
+      const isRight = /\[R\]/.test(character.name);
       const showOnlyOne = isLeft || isRight;
 
       const createEmbed = (c) => {
@@ -95,17 +100,16 @@ client.on('interactionCreate', async interaction => {
       };
 
       const embeds = [];
-
       if (isTag && !showOnlyOne) {
         const pair = characters.find(c =>
-          c.id === char.id &&
-          c.name !== char.name &&
+          c.id === character.id &&
+          c.name !== character.name &&
           c.group?.includes("タッグ")
         );
-        embeds.push(createEmbed(char));
+        embeds.push(createEmbed(character));
         if (pair) embeds.push(createEmbed(pair));
       } else {
-        embeds.push(createEmbed(char));
+        embeds.push(createEmbed(character));
       }
 
       await interaction.update({
@@ -114,22 +118,19 @@ client.on('interactionCreate', async interaction => {
         components: []
       });
     }
+
   } catch (err) {
     console.error('❌ interactionCreate中にエラー:', err);
-    try {
-      if (interaction.replied || interaction.deferred) {
-        await interaction.followUp({
-          content: 'エラーが発生しました。',
-          ephemeral: true
-        });
-      } else {
+    // 重複応答を避ける
+    if (!interaction.replied && !interaction.deferred) {
+      try {
         await interaction.reply({
-          content: 'エラーが発生しました。',
+          content: 'コマンド実行中にエラーが発生しました。',
           ephemeral: true
         });
+      } catch (err2) {
+        console.error('❌ エラーレスポンス失敗:', err2);
       }
-    } catch (err2) {
-      console.error('❌ エラーレスポンス失敗:', err2);
     }
   }
 });
