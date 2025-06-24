@@ -1,13 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 const { Client, Collection, GatewayIntentBits } = require('discord.js');
-const characters = require('./characters.json');
-const { generateCharacterEmbed } = require('./embedFactory');
-
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 client.commands = new Collection();
 
-// .envから読み込み（Renderでは環境変数に設定してある前提）
 const token = process.env.DISCORD_TOKEN;
 
 const commandsPath = path.join(__dirname, 'commands');
@@ -38,14 +34,7 @@ client.on('interactionCreate', async interaction => {
     }
   }
 
-  if (interaction.isStringSelectMenu() && interaction.customId === 'select_character') {
-    const charId = interaction.values[0];
-    const character = characters.find(c => c.id === charId || c.name === charId);
-    if (!character) return interaction.reply({ content: 'キャラが見つかりません。', ephemeral: true });
-
-    const embed = generateCharacterEmbed(character);
-    await interaction.update({ embeds: [embed], components: [] });
-  }
+  // ❌ StringSelectMenu の処理は不要：名前検索.jsに内包済み
 });
 
 client.login(token);
