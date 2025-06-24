@@ -1,5 +1,10 @@
-const { SlashCommandBuilder, StringSelectMenuBuilder, ActionRowBuilder, EmbedBuilder } = require('discord.js');
-const data = require('../characters.json');
+const {
+  SlashCommandBuilder,
+  StringSelectMenuBuilder,
+  ActionRowBuilder,
+  EmbedBuilder
+} = require('discord.js');
+const characters = require('../characters.json');
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -17,25 +22,25 @@ module.exports = {
     const keyword = interaction.options.getString('キーワード');
     const regex = new RegExp(keyword, 'i');
 
-    const matched = data.filter(c =>
-      regex.test(c.name) || (c.aliases && c.aliases.some(alias => regex.test(alias)))
+    const matched = characters.filter(c =>
+      regex.test(c.name) || (c.aliases?.some(a => regex.test(a)))
     );
 
     if (matched.length === 0) {
-      return interaction.editReply('該当キャラが見つかりません。');
+      return interaction.editReply({ content: '該当キャラが見つかりません。' });
     }
 
-    const limited = matched.slice(0, 25); // セレクトメニューの上限
+    const limited = matched.slice(0, 25); // セレクトメニューの制限
 
-    const menu = new StringSelectMenuBuilder()
-      .setCustomId('select-character')
+    const select = new StringSelectMenuBuilder()
+      .setCustomId(`select_character_${interaction.id}`) // 衝突防止のため一意ID
       .setPlaceholder('キャラを選択してください')
       .addOptions(limited.map(c => ({
-        label: c.name.length > 100 ? c.name.slice(0, 100) : c.name,
+        label: c.name.slice(0, 100),
         value: c.id
       })));
 
-    const row = new ActionRowBuilder().addComponents(menu);
+    const row = new ActionRowBuilder().addComponents(select);
 
     await interaction.editReply({
       content: 'キャラクターを選択してください：',
@@ -43,22 +48,21 @@ module.exports = {
     });
 
     const collector = interaction.channel.createMessageComponentCollector({
-      filter: i => i.customId === 'select-character' && i.user.id === interaction.user.id,
+      filter: i => i.customId === `select_character_${interaction.id}` && i.user.id === interaction.user.id,
       time: 60_000
     });
 
     collector.on('collect', async i => {
       await i.deferUpdate();
 
-      const selectedId = i.values[0];
-      const char = data.find(c => c.id === selectedId);
-      if (!char) {
-        return await interaction.editReply({ content: '選択されたキャラが見つかりませんでした。', components: [] });
+      const selected = characters.find(c => c.id === i.values[0]);
+      if (!selected) {
+        return interaction.editReply({ content: 'キャラが見つかりません。', components: [] });
       }
 
-      const isTag = char.group?.includes("タッグ");
-      const isLeft = /\[L\]/.test(char.name);
-      const isRight = /\[R\]/.test(char.name);
+      const isTag = selected.group?.includes('タッグ');
+      const isLeft = /\[L\]/.test(selected.name);
+      const isRight = /\[R\]/.test(selected.name);
       const showOnlyOne = isLeft || isRight;
 
       const createEmbed = (c) => {
@@ -68,17 +72,17 @@ module.exports = {
           .setColor(0x999999)
           .setImage(c.image)
           .addFields(
-            { name: '魔力覚醒順', value: c.awakening_order.join(" → "), inline: false },
-            { name: '奥義', value: `【${c.skills["奥義"].name}】\n${c.skills["奥義"].base}\n【覚醒】${c.skills["奥義"].awakened}` },
-            { name: '特技1', value: `【${c.skills["特技1"].name}】\n${c.skills["特技1"].base}\n【覚醒】${c.skills["特技1"].awakened}` },
-            { name: '特技2', value: `【${c.skills["特技2"].name}】\n${c.skills["特技2"].base}\n【覚醒】${c.skills["特技2"].awakened}` },
-            { name: '特殊能力', value: `【${c.skills["特殊"].name}】\n${c.skills["特殊"].base}\n【覚醒】${c.skills["特殊"].awakened}` }
+            { name: '魔力覚醒順', value: c.awakening_order.join(' → ') },
+            { name: '奥義', value: `【${c.skills.奥義.name}】\n${c.skills.奥義.base}\n【覚醒】${c.skills.奥義.awakened}` },
+            { name: '特技1', value: `【${c.skills.特技1.name}】\n${c.skills.特技1.base}\n【覚醒】${c.skills.特技1.awakened}` },
+            { name: '特技2', value: `【${c.skills.特技2.name}】\n${c.skills.特技2.base}\n【覚醒】${c.skills.特技2.awakened}` },
+            { name: '特殊能力', value: `【${c.skills.特殊.name}】\n${c.skills.特殊.base}\n【覚醒】${c.skills.特殊.awakened}` }
           );
 
-        if (c.awakening_order.includes("通常") && c.skills["通常"]) {
+        if (c.skills.通常 && c.awakening_order.includes('通常')) {
           embed.addFields({
             name: '通常',
-            value: `【${c.skills["通常"].name}】\n${c.skills["通常"].base}\n【覚醒】${c.skills["通常"].awakened}`
+            value: `【${c.skills.通常.name}】\n${c.skills.通常.base}\n【覚醒】${c.skills.通常.awakened}`
           });
         }
 
@@ -113,15 +117,13 @@ module.exports = {
       const embeds = [];
 
       if (isTag && !showOnlyOne) {
-        const pair = data.find(c =>
-          c.id === char.id &&
-          c.name !== char.name &&
-          c.group?.includes("タッグ")
+        const partner = characters.find(c =>
+          c.id === selected.id && c.name !== selected.name && c.group?.includes('タッグ')
         );
-        embeds.push(createEmbed(char));
-        if (pair) embeds.push(createEmbed(pair));
+        embeds.push(createEmbed(selected));
+        if (partner) embeds.push(createEmbed(partner));
       } else {
-        embeds.push(createEmbed(char));
+        embeds.push(createEmbed(selected));
       }
 
       await interaction.editReply({ content: '性能を表示しました。', embeds, components: [] });
@@ -129,10 +131,7 @@ module.exports = {
 
     collector.on('end', async collected => {
       if (collected.size === 0) {
-        await interaction.editReply({
-          content: '時間切れになりました。',
-          components: []
-        });
+        await interaction.editReply({ content: '時間切れになりました。', components: [] });
       }
     });
   }
