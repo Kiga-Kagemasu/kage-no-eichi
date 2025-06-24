@@ -1,6 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 const { Client, Collection, GatewayIntentBits } = require('discord.js');
+const characters = require('./characters.json');
+const { generateCharacterEmbed } = require('./embedFactory');
+
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 client.commands = new Collection();
 
@@ -18,23 +21,41 @@ client.once('ready', () => {
 });
 
 client.on('interactionCreate', async interaction => {
-  if (interaction.isChatInputCommand()) {
-    const command = client.commands.get(interaction.commandName);
-    if (!command) return;
-    try {
+  try {
+    // スラッシュコマンド
+    if (interaction.isChatInputCommand()) {
+      const command = client.commands.get(interaction.commandName);
+      if (!command) return;
+
       await command.execute(interaction);
-    } catch (err) {
-      console.error('❌ コマンド実行時エラー:', err);
-      const msg = 'コマンド実行中にエラーが発生しました。';
-      if (interaction.replied || interaction.deferred) {
-        await interaction.followUp({ content: msg, ephemeral: true });
-      } else {
-        await interaction.reply({ content: msg, ephemeral: true });
+    }
+
+    // セレクトメニュー
+    else if (interaction.isStringSelectMenu() && interaction.customId === 'select_character') {
+      const charId = interaction.values[0];
+      const character = characters.find(c => c.id === charId || c.name === charId);
+      if (!character) {
+        await interaction.reply({
+          content: 'キャラが見つかりません。',
+          ephemeral: true
+        });
+        return;
       }
+
+      const embed = generateCharacterEmbed(character);
+      await interaction.update({ embeds: [embed], components: [] });
+    }
+  } catch (err) {
+    console.error('❌ コマンド実行時エラー:', err);
+    try {
+      await interaction.followUp({
+        content: 'コマンド実行中にエラーが発生しました。',
+        ephemeral: true
+      });
+    } catch (err2) {
+      console.error('❌ エラーレスポンス失敗:', err2);
     }
   }
-
-  // ❌ StringSelectMenu の処理は不要：名前検索.jsに内包済み
 });
 
 client.login(token);
