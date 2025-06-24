@@ -20,28 +20,36 @@ module.exports = {
       const keyword = interaction.options.getString('キーワード');
       const regex = new RegExp(keyword, 'i');
 
+      // deferは最初に入れてタイムアウト防止（reply前提で後出ししない）
+      await interaction.deferReply({ ephemeral: false });
+
       const matched = data.filter(c =>
         regex.test(c.name) || (c.aliases && c.aliases.some(alias => regex.test(alias)))
       );
 
-      if (matched.length === 0) {
-        return await interaction.reply({
-          content: '該当キャラが見つかりませんでした。',
-          flags: 64 // ephemeral: true の代わり
-        });
+      // 同一IDのキャラは1件のみ選択肢に（タッグ2体 → 1件）
+      const uniqueMap = new Map();
+      for (const char of matched) {
+        if (!uniqueMap.has(char.id)) {
+          uniqueMap.set(char.id, char);
+        }
       }
 
-      // インタラクションの応答（遅延防止）
-      await interaction.deferReply();
+      const limited = Array.from(uniqueMap.values()).slice(0, 25);
 
-      const limited = matched.slice(0, 25);
+      if (limited.length === 0) {
+        return await interaction.editReply('該当キャラが見つかりませんでした。');
+      }
+
+      const options = limited.map(c => ({
+        label: c.name.replace(/\[.\]$/, '').slice(0, 100), // シャドロラ[L]/[R] → シャドロラ
+        value: c.id
+      }));
+
       const menu = new StringSelectMenuBuilder()
         .setCustomId('select_character')
         .setPlaceholder('キャラを選択してください')
-        .addOptions(limited.map(c => ({
-          label: c.name.slice(0, 100),
-          value: c.id
-        })));
+        .addOptions(options);
 
       const row = new ActionRowBuilder().addComponents(menu);
 
@@ -56,7 +64,7 @@ module.exports = {
         if (!interaction.replied && !interaction.deferred) {
           await interaction.reply({
             content: 'エラーが発生しました。',
-            flags: 64
+            ephemeral: true
           });
         } else if (interaction.deferred && !interaction.replied) {
           await interaction.editReply({
