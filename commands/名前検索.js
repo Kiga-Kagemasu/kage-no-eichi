@@ -1,4 +1,8 @@
-const { SlashCommandBuilder, StringSelectMenuBuilder, ActionRowBuilder } = require('discord.js');
+const {
+  SlashCommandBuilder,
+  StringSelectMenuBuilder,
+  ActionRowBuilder
+} = require('discord.js');
 const data = require('../characters.json');
 
 module.exports = {
@@ -25,7 +29,9 @@ module.exports = {
         return;
       }
 
-      const limited = matched.slice(0, 25); // 最大25件
+      await interaction.deferReply({ ephemeral: false }); // ✨重要
+
+      const limited = matched.slice(0, 25);
       const menu = new StringSelectMenuBuilder()
         .setCustomId('select_character')
         .setPlaceholder('キャラを選択してください')
@@ -36,21 +42,17 @@ module.exports = {
 
       const row = new ActionRowBuilder().addComponents(menu);
 
-      await interaction.reply({
+      await interaction.editReply({
         content: 'キャラクターを選択してください：',
-        components: [row],
-        ephemeral: false
+        components: [row]
       });
-
     } catch (err) {
       console.error('❌ 名前検索中にエラー:', err);
-
       if (!interaction.replied && !interaction.deferred) {
-        try {
-          await interaction.reply({ content: 'エラーが発生しました。', ephemeral: true });
-        } catch (e) {
-          console.error('❌ エラーレスポンス失敗:', e);
-        }
+        await interaction.reply({
+          content: 'コマンド実行中にエラーが発生しました。',
+          ephemeral: true
+        });
       }
     }
   }
