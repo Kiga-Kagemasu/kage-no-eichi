@@ -30,11 +30,13 @@ client.on('interactionCreate', async interaction => {
         const charName = interaction.values[0];
         const selected = characters.find(c => c.name === charName);
         if (!selected) {
-          return await interaction.update({
-            content: 'キャラが見つかりませんでした。',
-            components: [],
-            ephemeral: true
-          });
+          if (!interaction.replied && !interaction.deferred) {
+            await interaction.reply({
+              content: 'キャラが見つかりませんでした。',
+              flags: 64 // 👈 ephemeral: true の代わり
+            });
+          }
+          return;
         }
 
         const createEmbed = (c) => {
@@ -45,26 +47,16 @@ client.on('interactionCreate', async interaction => {
             .setImage(c.image)
             .addFields(
               { name: '魔力覚醒順', value: c.awakening_order.join(" → ") },
-              { name: '奥義', value: `【${c.skills["奥義"].name}】
-${c.skills["奥義"].base}
-【覚醒】${c.skills["奥義"].awakened}` },
-              { name: '特技1', value: `【${c.skills["特技1"].name}】
-${c.skills["特技1"].base}
-【覚醒】${c.skills["特技1"].awakened}` },
-              { name: '特技2', value: `【${c.skills["特技2"].name}】
-${c.skills["特技2"].base}
-【覚醒】${c.skills["特技2"].awakened}` },
-              { name: '特殊能力', value: `【${c.skills["特殊"].name}】
-${c.skills["特殊"].base}
-【覚醒】${c.skills["特殊"].awakened}` }
+              { name: '奥義', value: `【${c.skills["奥義"].name}】\n${c.skills["奥義"].base}\n【覚醒】${c.skills["奥義"].awakened}` },
+              { name: '特技1', value: `【${c.skills["特技1"].name}】\n${c.skills["特技1"].base}\n【覚醒】${c.skills["特技1"].awakened}` },
+              { name: '特技2', value: `【${c.skills["特技2"].name}】\n${c.skills["特技2"].base}\n【覚醒】${c.skills["特技2"].awakened}` },
+              { name: '特殊能力', value: `【${c.skills["特殊"].name}】\n${c.skills["特殊"].base}\n【覚醒】${c.skills["特殊"].awakened}` }
             );
 
           if (c.awakening_order.includes("通常") && c.skills["通常"]) {
             embed.addFields({
               name: '通常',
-              value: `【${c.skills["通常"].name}】
-${c.skills["通常"].base}
-【覚醒】${c.skills["通常"].awakened}`
+              value: `【${c.skills["通常"].name}】\n${c.skills["通常"].base}\n【覚醒】${c.skills["通常"].awakened}`
             });
           }
 
@@ -77,21 +69,18 @@ ${c.skills["通常"].base}
             if (c.magitools.normal?.name) {
               embed.addFields({
                 name: '魔道具①',
-                value: `【${c.magitools.normal.name}】
-${c.magitools.normal.effect}`
+                value: `【${c.magitools.normal.name}】\n${c.magitools.normal.effect}`
               });
             }
             if (c.magitools.normal2?.name) {
               embed.addFields({
                 name: '魔道具②',
-                value: `【${c.magitools.normal2.name}】
-${c.magitools.normal2.effect}`
+                value: `【${c.magitools.normal2.name}】\n${c.magitools.normal2.effect}`
               });
             } else if (c.magitools.ss_plus?.name && c.magitools.ss_plus.name !== '未実装') {
               embed.addFields({
                 name: '魔道具（SS+）',
-                value: `【${c.magitools.ss_plus.name}】
-${c.magitools.ss_plus.effect}`
+                value: `【${c.magitools.ss_plus.name}】\n${c.magitools.ss_plus.effect}`
               });
             }
           }
@@ -118,11 +107,17 @@ ${c.magitools.ss_plus.effect}`
           embeds.push(createEmbed(selected));
         }
 
-         await interaction.update({
-          content: '性能を表示しました。',
-          embeds: embeds.slice(0, 10),  
-          components: []
-        });
+        try {
+          if (!interaction.replied && !interaction.deferred) {
+            await interaction.update({
+              content: '性能を表示しました。',
+              embeds: embeds.slice(0, 10), // Discord制限対応
+              components: []
+            });
+          }
+        } catch (err) {
+          console.error('❌ update失敗:', err);
+        }
       }
     }
   } catch (err) {
@@ -131,7 +126,7 @@ ${c.magitools.ss_plus.effect}`
       if (!interaction.replied && !interaction.deferred) {
         await interaction.reply({
           content: 'コマンド実行中にエラーが発生しました。',
-          ephemeral: true
+          flags: 64 // 👈 ephemeral: true の代わり
         });
       }
     } catch (err2) {
@@ -142,14 +137,13 @@ ${c.magitools.ss_plus.effect}`
 
 client.login(token);
 
+// Express
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
-
 app.get('/', (req, res) => {
   res.send('Bot is running!');
 });
-
 app.listen(PORT, () => {
   console.log(`🌐 HTTPサーバーがポート ${PORT} で起動しました`);
 });
