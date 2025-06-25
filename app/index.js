@@ -126,3 +126,16 @@ client.on('interactionCreate', async interaction => {
 });
 
 client.login(token);
+
+// === Expressでポート待機 ===
+const express = require('express');
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.get('/', (req, res) => {
+  res.send('Bot is running!');
+});
+
+app.listen(PORT, () => {
+  console.log(`🌐 HTTPサーバーがポート ${PORT} で起動しました`);
+});
