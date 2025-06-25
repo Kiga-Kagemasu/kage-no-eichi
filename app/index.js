@@ -1,4 +1,3 @@
-// === index.js ===
 const fs = require('fs');
 const path = require('path');
 const { Client, Collection, GatewayIntentBits, EmbedBuilder } = require('discord.js');
@@ -119,7 +118,11 @@ ${c.magitools.ss_plus.effect}`
           embeds.push(createEmbed(selected));
         }
 
-        await interaction.update({ content: '性能を表示しました。', embeds, components: [] });
+         await interaction.update({
+          content: '性能を表示しました。',
+          embeds: embeds.slice(0, 10),  
+          components: []
+        });
       }
     }
   } catch (err) {
