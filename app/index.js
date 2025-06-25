@@ -1,3 +1,4 @@
+// === index.js ===
 const fs = require('fs');
 const path = require('path');
 const { Client, Collection, GatewayIntentBits, EmbedBuilder } = require('discord.js');
@@ -15,21 +16,20 @@ for (const file of commandFiles) {
   client.commands.set(command.data.name, command);
 }
 
-// 起動ログ
 client.once('ready', () => {
   console.log(`✅ ログイン成功: ${client.user.tag}`);
 });
 
-// Interaction 処理
 client.on('interactionCreate', async interaction => {
   try {
     if (interaction.isChatInputCommand()) {
       const command = client.commands.get(interaction.commandName);
       if (command) await command.execute(interaction);
+
     } else if (interaction.isStringSelectMenu()) {
       if (interaction.customId === 'select_character') {
-        const charId = interaction.values[0];
-        const selected = characters.find(c => c.id === charId || c.name === charId);
+        const charName = interaction.values[0];
+        const selected = characters.find(c => c.name === charName);
         if (!selected) {
           return await interaction.update({
             content: 'キャラが見つかりませんでした。',
@@ -46,16 +46,26 @@ client.on('interactionCreate', async interaction => {
             .setImage(c.image)
             .addFields(
               { name: '魔力覚醒順', value: c.awakening_order.join(" → ") },
-              { name: '奥義', value: `【${c.skills["奥義"].name}】\n${c.skills["奥義"].base}\n【覚醒】${c.skills["奥義"].awakened}` },
-              { name: '特技1', value: `【${c.skills["特技1"].name}】\n${c.skills["特技1"].base}\n【覚醒】${c.skills["特技1"].awakened}` },
-              { name: '特技2', value: `【${c.skills["特技2"].name}】\n${c.skills["特技2"].base}\n【覚醒】${c.skills["特技2"].awakened}` },
-              { name: '特殊能力', value: `【${c.skills["特殊"].name}】\n${c.skills["特殊"].base}\n【覚醒】${c.skills["特殊"].awakened}` }
+              { name: '奥義', value: `【${c.skills["奥義"].name}】
+${c.skills["奥義"].base}
+【覚醒】${c.skills["奥義"].awakened}` },
+              { name: '特技1', value: `【${c.skills["特技1"].name}】
+${c.skills["特技1"].base}
+【覚醒】${c.skills["特技1"].awakened}` },
+              { name: '特技2', value: `【${c.skills["特技2"].name}】
+${c.skills["特技2"].base}
+【覚醒】${c.skills["特技2"].awakened}` },
+              { name: '特殊能力', value: `【${c.skills["特殊"].name}】
+${c.skills["特殊"].base}
+【覚醒】${c.skills["特殊"].awakened}` }
             );
 
           if (c.awakening_order.includes("通常") && c.skills["通常"]) {
             embed.addFields({
               name: '通常',
-              value: `【${c.skills["通常"].name}】\n${c.skills["通常"].base}\n【覚醒】${c.skills["通常"].awakened}`
+              value: `【${c.skills["通常"].name}】
+${c.skills["通常"].base}
+【覚醒】${c.skills["通常"].awakened}`
             });
           }
 
@@ -68,18 +78,21 @@ client.on('interactionCreate', async interaction => {
             if (c.magitools.normal?.name) {
               embed.addFields({
                 name: '魔道具①',
-                value: `【${c.magitools.normal.name}】\n${c.magitools.normal.effect}`
+                value: `【${c.magitools.normal.name}】
+${c.magitools.normal.effect}`
               });
             }
             if (c.magitools.normal2?.name) {
               embed.addFields({
                 name: '魔道具②',
-                value: `【${c.magitools.normal2.name}】\n${c.magitools.normal2.effect}`
+                value: `【${c.magitools.normal2.name}】
+${c.magitools.normal2.effect}`
               });
             } else if (c.magitools.ss_plus?.name && c.magitools.ss_plus.name !== '未実装') {
               embed.addFields({
                 name: '魔道具（SS+）',
-                value: `【${c.magitools.ss_plus.name}】\n${c.magitools.ss_plus.effect}`
+                value: `【${c.magitools.ss_plus.name}】
+${c.magitools.ss_plus.effect}`
               });
             }
           }
@@ -95,7 +108,6 @@ client.on('interactionCreate', async interaction => {
         const embeds = [];
 
         if (isTag && !showOnlyOne) {
-          // 左右両方表示（例：/名前検索で「シャドウアウロラ」選択時）
           const pair = characters.find(c =>
             c.id === selected.id &&
             c.name !== selected.name &&
@@ -127,7 +139,6 @@ client.on('interactionCreate', async interaction => {
 
 client.login(token);
 
-// === Expressでポート待機（Koyebのヘルスチェック用） ===
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
