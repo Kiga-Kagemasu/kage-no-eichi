@@ -13,8 +13,7 @@ module.exports = {
           { name: '青', value: '青' },
           { name: '赤', value: '赤' },
           { name: '緑', value: '緑' },
-          { name: '黄', value: '黄' },
-          { name: '紫', value: '紫' }
+          { name: '黄', value: '黄' }
         )
     )
     .addStringOption(option =>
