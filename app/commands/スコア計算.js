@@ -3,22 +3,22 @@ const { SlashCommandBuilder } = require('discord.js');
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('スコア計算')
-    .setDescription('与ダメージ、HP、ボーナス、スコアのいずれかを自動計算')
+    .setDescription('与ダメ、HP、ボーナス、スコアのいずれかを自動計算')
     .addStringOption(opt =>
       opt.setName('与ダメージ')
-        .setDescription('例：5000万')
+        .setDescription('例：半角全角数字、億/万対応　例:5000万')
         .setRequired(false))
     .addStringOption(opt =>
       opt.setName('ボスhp')
-        .setDescription('例：1億')
+        .setDescription('例：半角全角数字、億/万対応　例:5000万')
         .setRequired(false))
     .addStringOption(opt =>
       opt.setName('イベントボーナス')
-        .setDescription('％表記（例：56）')
+        .setDescription('％表記（例：56）%はつけてもつけなくても可')
         .setRequired(false))
     .addStringOption(opt =>
       opt.setName('スコア')
-        .setDescription('例：600000')
+        .setDescription('上限60万(例：60万、600000)')
         .setRequired(false)
     ),
 
@@ -51,7 +51,7 @@ module.exports = {
       const baseScore = 20000 + (ratio * 280000);
       const score = Math.floor(baseScore * (1 + c / 100));
       const finalScore = Math.min(score, 600000);
-      result = `スコア: ${finalScore.toLocaleString()}点`;
+      result = `スコア: ${finalScore.toLocaleString()}pt`;
     }
 
     // 与ダメージ計算
