@@ -10,7 +10,7 @@ const data = require('../characters.json');
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName('絞り込み_v2')
+    .setName('絞り込み_2')
     .setDescription('属性・ロールでキャラを絞り込み')
     .addStringOption(option =>
       option.setName('属性')
