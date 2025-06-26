@@ -22,11 +22,9 @@ module.exports = {
     const keyword = interaction.options.getString('キーワード');
     const regex = new RegExp(keyword, 'i');
 
-    // 検索＋[R]を除外（[L]または通常のみ表示）
     const matched = data.filter(c =>
-      (regex.test(c.name) || (c.aliases && c.aliases.some(alias => regex.test(alias)))) &&
-      (!c.group?.includes('タッグ') || /\[L\]/.test(c.name) || !/\[[LR]\]/.test(c.name))
-    );
+  regex.test(c.name) || (c.aliases && c.aliases.some(alias => regex.test(alias)))
+);
 
     const uniqueMap = new Map();
     for (const c of matched) {
