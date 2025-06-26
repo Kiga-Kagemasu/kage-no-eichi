@@ -14,18 +14,18 @@ module.exports = {
     .setDescription('属性・ロールでキャラを絞り込み')
     .addStringOption(option =>
       option.setName('属性')
-        .setDescription('赤、青、緑、黄（任意）')
+        .setDescription('属性を選択（任意）')
         .setRequired(false)
         .addChoices(
           { name: '赤', value: '赤' },
-          { name: '青', value: '青' },
           { name: '緑', value: '緑' },
-          { name: '黄', value: '黄' }
+          { name: '黄', value: '黄' },
+          { name: '青', value: '青' }
         )
     )
     .addStringOption(option =>
       option.setName('ロール')
-        .setDescription('タンク、アタッカー、サポーター（任意）')
+        .setDescription('ロールを選択（任意）')
         .setRequired(false)
         .addChoices(
           { name: 'タンク', value: 'タンク' },
