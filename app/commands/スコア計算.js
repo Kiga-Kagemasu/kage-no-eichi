@@ -84,7 +84,7 @@ module.exports = {
     // HP割合計算（a, b のどちらかが上で求まった場合も含む）
     if (a && b) {
       const hpRatio = Math.floor((a / b) * 10000) / 100;
-      result += `\nHP割合: ${hpRatio.toFixed(2)}%`;
+      result += `\n目標HP割合: ${hpRatio.toFixed(2)}%`;
     }
 
     await interaction.reply({ content: result, ephemeral: true });
