@@ -1,7 +1,10 @@
 const {
   SlashCommandBuilder,
   StringSelectMenuBuilder,
-  ActionRowBuilder
+  ActionRowBuilder,
+  ButtonBuilder,
+  ButtonStyle,
+  ComponentType
 } = require('discord.js');
 const data = require('../characters.json');
 
@@ -28,25 +31,76 @@ module.exports = {
       return interaction.editReply('該当効果のキャラは見つかりません。');
     }
 
-    const components = [];
     const pageSize = 25;
+    const chunked = [];
     for (let i = 0; i < found.length; i += pageSize) {
-      const page = found.slice(i, i + pageSize);
-      const menu = new StringSelectMenuBuilder()
-        .setCustomId(`select_character_page_${i / pageSize}`)
-        .setPlaceholder(`キャラを選択（${i + 1}〜${i + page.length}件目）`)
-        .addOptions(
-          page.map(c => ({
-            label: c.name.replace(/\[.\]$/, '').slice(0, 100),
-            value: c.name
-          }))
-        );
-      components.push(new ActionRowBuilder().addComponents(menu));
+      chunked.push(found.slice(i, i + pageSize));
     }
 
-    await interaction.editReply({
-      content: '効果に該当するキャラ一覧：',
-      components
+    let currentPage = 0;
+
+    const getSelectRow = (page) => {
+      const menu = new StringSelectMenuBuilder()
+        .setCustomId('select_character')
+        .setPlaceholder('キャラを選択してください')
+        .addOptions(chunked[page].map(c => ({
+          label: c.name.replace(/\[.\]$/, '').slice(0, 100),
+          value: c.name
+        })));
+      return new ActionRowBuilder().addComponents(menu);
+    };
+
+    const getNavRow = (page) => {
+      const prev = new ButtonBuilder()
+        .setCustomId('prev_page')
+        .setLabel('← 前へ')
+        .setStyle(ButtonStyle.Secondary)
+        .setDisabled(page === 0);
+
+      const next = new ButtonBuilder()
+        .setCustomId('next_page')
+        .setLabel('次へ →')
+        .setStyle(ButtonStyle.Secondary)
+        .setDisabled(page === chunked.length - 1);
+
+      return new ActionRowBuilder().addComponents(prev, next);
+    };
+
+    const message = await interaction.editReply({
+      content: `効果に該当するキャラ（${found.length}件中 ${currentPage + 1}/${chunked.length}ページ）：`,
+      components: [getSelectRow(currentPage), getNavRow(currentPage)],
+      fetchReply: true
+    });
+
+    const collector = message.createMessageComponentCollector({
+      componentType: ComponentType.Button,
+      time: 60_000
+    });
+
+    collector.on('collect', async i => {
+      if (i.user.id !== interaction.user.id) {
+        return i.reply({ content: 'これはあなた専用の操作です。', ephemeral: true });
+      }
+
+      if (i.customId === 'prev_page') currentPage--;
+      else if (i.customId === 'next_page') currentPage++;
+
+      try {
+        await i.update({
+          content: `効果に該当するキャラ（${found.length}件中 ${currentPage + 1}/${chunked.length}ページ）：`,
+          components: [getSelectRow(currentPage), getNavRow(currentPage)]
+        });
+      } catch (err) {
+        console.error('❌ ページ更新失敗:', err);
+      }
+    });
+
+    collector.on('end', async () => {
+      try {
+        await message.edit({ components: [] });
+      } catch (e) {
+        console.error('❌ コンポーネント削除失敗:', e);
+      }
     });
   }
 };
