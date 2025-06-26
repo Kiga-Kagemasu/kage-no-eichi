@@ -30,10 +30,12 @@ module.exports = {
 
     const parseNumber = str => {
       if (!str) return null;
-      return Number(str.replace(/[^\d.]/g, '')
-        .replace(/万/g, '0000')
-        .replace(/億/g, '00000000')
-        .replace(/[０-９]/g, s => String.fromCharCode(s.charCodeAt(0) - 0xFEE0)));
+      return Number(
+        str.replace(/億/g, '00000000')
+           .replace(/万/g, '0000')
+           .replace(/[０-９]/g, s => String.fromCharCode(s.charCodeAt(0) - 0xFEE0))
+           .replace(/[^\d.]/g, '')
+      );
     };
 
     const a = parseNumber(rawA);
@@ -41,28 +43,40 @@ module.exports = {
     const c = parseNumber(rawC);
     const d = parseNumber(rawD);
 
-    let result = '❌ 正常に計算できませんでした。値を3つ入力してください。';
+    let result = '❌ 計算できませんでした。値を3つだけ入力してください。';
 
-    // スコアを計算
+    // スコア計算
     if (a && b && c && !d) {
-      const ratio = Math.min(1, a / b);
-      const score = Math.floor(600000 * ratio * (1 + c / 100));
-      result = `スコア: ${score.toLocaleString()}点`;
+      const ratio = Math.max(0, a / b);
+      const baseScore = 20000 + (ratio * 280000);
+      const score = Math.floor(baseScore * (1 + c / 100));
+      const finalScore = Math.min(score, 600000);
+      result = `スコア: ${finalScore.toLocaleString()}点`;
     }
-    // 与ダメージを計算
+
+    // 与ダメージ計算
     else if (b && c && d && !a) {
-      const dmg = Math.floor((d / 600000) * (b / (1 + c / 100)));
-      result = `与ダメージ: ${dmg.toLocaleString()}`;
+      const bonusRate = 1 + c / 100;
+      const baseScore = d / bonusRate;
+      const ratio = Math.max(0, (baseScore - 20000) / 280000);
+      const damage = Math.floor(ratio * b);
+      result = `与ダメージ: ${damage.toLocaleString()}`;
     }
-    // ボスHPを計算
+
+    // ボスHP計算
     else if (a && c && d && !b) {
-      const hp = Math.floor((a * (1 + c / 100) * 600000) / d);
+      const bonusRate = 1 + c / 100;
+      const baseScore = d / bonusRate;
+      const ratio = Math.max(0, (baseScore - 20000) / 280000);
+      const hp = Math.floor(a / ratio);
       result = `ボスHP: ${hp.toLocaleString()}`;
     }
-    // ボーナスを計算
+
+    // ボーナス計算
     else if (a && b && d && !c) {
-      const ratio = Math.min(1, a / b);
-      const bonus = (d / (600000 * ratio)) - 1;
+      const ratio = Math.max(0, a / b);
+      const baseScore = 20000 + (ratio * 280000);
+      const bonus = (d / baseScore) - 1;
       result = `イベントボーナス: ${(bonus * 100).toFixed(2)}%`;
     }
 
