@@ -20,8 +20,7 @@ module.exports = {
             '`/ポジション順` - ポジション値で降順に表示\n' +
             '`/絞り込み` - 属性、ロール条件で検索＆性能表示',
         }
-      )
-      .setFooter({ text: '※各コマンドの引数は補完候補から選べます' });
+      );
 
     await interaction.reply({ embeds: [embed], ephemeral: true }); // 自分だけに表示
   }
