@@ -3,7 +3,7 @@ const data = require('../characters.json');
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName('1.キャラ検索')
+    .setName('1_キャラ検索')
     .setDescription('キャラクター名から性能を検索します')
     .addStringOption(option =>
       option.setName('名前')
