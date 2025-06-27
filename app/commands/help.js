@@ -2,7 +2,7 @@ const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName('7.help')
+    .setName('7_help')
     .setDescription('コマンド一覧と使い方'),
 
   async execute(interaction) {
