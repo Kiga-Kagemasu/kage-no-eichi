@@ -3,7 +3,7 @@ const data = require('../characters.json');
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName('ポジション順')
+    .setName('5.ポジション順')
     .setDescription('ポジション値が高い順にキャラを表示')
     .addStringOption(option =>
       option.setName('属性')
