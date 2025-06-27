@@ -2,7 +2,7 @@ const { SlashCommandBuilder } = require('discord.js');
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName('スコア計算')
+    .setName('6.スコア計算')
     .setDescription('与ダメ、HP、ボーナス、スコアのいずれかを自動計算')
     .addStringOption(opt =>
       opt.setName('与ダメージ')
