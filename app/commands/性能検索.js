@@ -10,7 +10,7 @@ const data = require('../characters.json');
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName('性能検索')
+    .setName('3.性能検索')
     .setDescription('効果キーワードからキャラを検索します')
     .addStringOption(option =>
       option.setName('効果')
