@@ -3982,43 +3982,43 @@
   {
     "id": "zeta1",
     "name": "ゼータ[常に任を忘れず]",
-    "aliases": [""],
-    "attribute": "",
-    "role": "",
+    "aliases": ["黄子供ゼータ","黄幼少ゼータ"],
+    "attribute": "黄",
+    "role": "アタッカー",
     "position": 384,
-    "awakening_order": ["", "", "", "", ""],
+    "awakening_order": ["奥義", "特技1", "特殊", "特技2", "魔道具"],
     "skills": {
       "奥義": {
-        "name": "",
-        "base": "",
-        "awakened": ""
+        "name": "圧砕ノ翔刃",
+        "base": "敵1体を中心とした範囲150cm内の敵全てに800.00%のダメージを与え、さらに10秒間「暗闇」を付与",
+        "awakened": "敵1体を中心とした範囲150cm内の敵全てに1150.00%のダメージを与え、さらに10秒間「暗闇」を付与"
       },
       "特技1": {
-        "name": "",
-        "base": "",
-        "awakened": ""
+        "name": "跳躯・二連刃",
+        "base": "敵1体を中心とした範囲100cm内の敵全てに120.00%のダメージ",
+        "awakened": "敵1体を中心とした範囲100cm内の敵全てに180.00%のダメージ"
       },
       "特技2": {
-        "name": "",
-        "base": "",
-        "awakened": ""
+        "name": "精神集中",
+        "base": "自分のクリティカル率を10秒間50.00%アップ",
+        "awakened": "自分のクリティカル率を13秒間50.00%アップ"
       },
       "特殊": {
-        "name": "",
-        "base": "",
-        "awakened": ""
+        "name": "常に任を忘れず",
+        "base": "WAVE開始時、与ダメージを20秒間50.00%アップ",
+        "awakened": "WAVE開始時、与ダメージを20秒間75.00%アップ"
       }
     },
-    "combo": "",
-    "group": [""],
+    "combo": "コンボボーナスに応じて、75.00%～1500.00%のダメージ",
+    "group": ["獣人","シャドウガーデン","七陰"],
     "magitools": {
       "normal": {
-        "name": "",
-        "effect": ""
+        "name": "ゼータ自慢の干し魚",
+        "effect": "WAVE開始時、与ダメージを20秒間20.00%アップ"
       },
       "ss_plus": {
-        "name": "",
-        "effect": ""
+        "name": "イータ特性携帯フライヤー",
+        "effect": "WAVE開始時、自分のクリティカル率を50.00%アップ(永続)し、さらにクリティカル攻撃倍率を20.00%アップ(永続)し、さらに攻撃力を30.00%アップ(永続)し、さらに行動速度を30.00%アップ(永続)+敵全体に30秒間威力2.00%の「毒」を5個付与"
       }
     },
     "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E9%BB%84%E5%AD%90%E3%82%BB%E3%82%99%E3%83%BC%E3%82%BF.PNG?raw=true"
@@ -4030,7 +4030,7 @@
     "attribute": "",
     "role": "",
     "position": 381,
-    "awakening_order": ["", "", "", "", ""],
+    "awakening_order": ["奥義", "特技1", "特殊", "特技2", "魔道具"],
     "skills": {
       "奥義": {
         "name": "",
@@ -4053,8 +4053,8 @@
         "awakened": ""
       }
     },
-    "combo": "",
-    "group": [""],
+    "combo": "コンボボーナスに応じて、75.00%～1500.00%のダメージ",
+    "group": ["獣人","シャドウガーデン","スライムスーツ","七陰"],
     "magitools": {
       "normal": {
         "name": "",
@@ -4074,7 +4074,7 @@
     "attribute": "",
     "role": "",
     "position": 232,
-    "awakening_order": ["", "", "", "", ""],
+    "awakening_order": ["特殊", "特技1", "魔道具", "特技2", "奥義"],
     "skills": {
       "奥義": {
         "name": "",
@@ -4098,7 +4098,7 @@
       }
     },
     "combo": "",
-    "group": [""],
+    "group": ["獣人","シャドウガーデン","制服","七陰"],
     "magitools": {
       "normal": {
         "name": "",
@@ -4118,7 +4118,7 @@
     "attribute": "",
     "role": "",
     "position": 452,
-    "awakening_order": ["", "", "", "", ""],
+    "awakening_order": ["魔道具", "特殊", "特技2", "特技1", "奥義"],
     "skills": {
       "奥義": {
         "name": "",
@@ -4141,8 +4141,8 @@
         "awakened": ""
       }
     },
-    "combo": "",
-    "group": [""],
+    "combo": "コンボボーナスに応じて、75.00%～1500.00%のダメージ",
+    "group": ["獣人","シャドウガーデン","七陰"],
     "magitools": {
       "normal": {
         "name": "",
@@ -4162,7 +4162,7 @@
     "attribute": "",
     "role": "",
     "position": 454,
-    "awakening_order": ["", "", "", "", ""],
+    "awakening_order": ["特殊", "特技1", "特技2", "魔道具", "奥義"],
     "skills": {
       "奥義": {
         "name": "",
@@ -4186,7 +4186,7 @@
       }
     },
     "combo": "",
-    "group": [""],
+    "group": ["獣人","シャドウガーデン","スライムスーツ","七陰"],
     "magitools": {
       "normal": {
         "name": "",
@@ -4206,7 +4206,7 @@
     "attribute": "",
     "role": "",
     "position": 456,
-    "awakening_order": ["", "", "", "", ""],
+    "awakening_order": ["魔道具", "特殊", "特技2", "特技1", "奥義"],
     "skills": {
       "奥義": {
         "name": "",
@@ -4229,8 +4229,8 @@
         "awakened": ""
       }
     },
-    "combo": "",
-    "group": [""],
+    "combo": "コンボボーナスに応じて、75.00%～1500.00%のダメージ",
+    "group": ["獣人","シャドウガーデン","七陰"],
     "magitools": {
       "normal": {
         "name": "",
@@ -4250,7 +4250,7 @@
     "attribute": "",
     "role": "",
     "position": 519,
-    "awakening_order": ["", "", "", "", ""],
+    "awakening_order": ["特殊", "奥義", "特技2", "魔道具", "特技1"],
     "skills": {
       "奥義": {
         "name": "",
@@ -4274,7 +4274,7 @@
       }
     },
     "combo": "",
-    "group": [""],
+    "group": ["獣人","シャドウガーデン","サマー","七陰"],
     "magitools": {
       "normal": {
         "name": "",
@@ -4294,7 +4294,7 @@
     "attribute": "",
     "role": "",
     "position": 460,
-    "awakening_order": ["", "", "", "", ""],
+    "awakening_order": ["魔道具", "特技2", "特技1", "奥義", "特殊"],
     "skills": {
       "奥義": {
         "name": "",
@@ -4317,8 +4317,8 @@
         "awakened": ""
       }
     },
-    "combo": "",
-    "group": [""],
+    "combo": "コンボボーナスに応じて、75.00%～1500.00%のダメージ",
+    "group": ["獣人","シャドウガーデン","七陰"],
     "magitools": {
       "normal": {
         "name": "",
@@ -4338,7 +4338,7 @@
     "attribute": "",
     "role": "",
     "position": 451,
-    "awakening_order": ["", "", "", "", ""],
+    "awakening_order": ["通常", "特技1", "特技2", "奥義", "特殊"],
     "skills": {
       "奥義": {
         "name": "",
@@ -4367,7 +4367,7 @@
       }
     },
     "combo": "",
-    "group": [""],
+    "group": ["獣人","シャドウガーデン","魔人","七陰"],
     "magitools": {
       "normal": {
         "name": "",
