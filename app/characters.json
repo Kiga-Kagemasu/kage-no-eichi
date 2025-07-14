@@ -41,7 +41,7 @@
         "effect": "自分がダメージを受ける度に(再発動3秒)、自分に15秒間「パリィ」を3個付与+自分よりも後ろの味方全体に15秒間攻撃力の150.00の「シールド」を付与+ランダムな敵1体のSPを30.00減少"
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5172.png?v=1750597090561"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E7%A7%81%E6%9C%8D%E3%82%A2%E3%82%A4%E3%83%AA%E3%82%B9.PNG?raw=true"
   },
   {
     "id": "iris2",
@@ -85,7 +85,7 @@
         "effect": "WAVE開始時、自分の気絶耐性を15秒間100.00%アップし、さらに攻撃力を60秒間編成されている赤属性の数×10.00%アップし、さらに60秒間編成されている人間の数×10.00%"
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5173.png?v=1750597093511"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E8%B5%A4%E3%82%A2%E3%82%A4%E3%83%AA%E3%82%B9.PNG?raw=true"
   },
    {
     "id": "iris3",
@@ -129,7 +129,7 @@
         "effect": ""
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5174.png?v=1750597097243"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E3%82%AF%E3%83%AA%E3%82%B9%E3%83%9E%E3%82%B9%E3%82%A2%E3%82%A4%E3%83%AA%E3%82%B9.PNG?raw=true"
   },
    {
     "id": "iris4",
@@ -173,7 +173,7 @@
         "effect": ""
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5171.png?v=1750597087362"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E3%82%BF%E3%83%B3%E3%82%AF%E3%82%A2%E3%82%A4%E3%83%AA%E3%82%B9.PNG?raw=true"
   },
    {
     "id": "aurora1",
@@ -217,7 +217,7 @@
         "effect": "WAVE開始時、自分に60秒間「魔人の力」を付与し、さらに60秒間クリティカル攻撃倍率を40.00%アップ+奥義発動時、敵全体に13秒間威力150.00%の弱点を付与+自分の攻撃力を15秒間50.00%アップし、さらに行動速度を15秒間50.00%アップ"
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5176.png?v=1750608013503"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E8%B5%A4%E3%82%A2%E3%82%A6%E3%83%AD%E3%83%A9.PNG?raw=true"
   },
    {
     "id": "aurora2",
@@ -261,7 +261,7 @@
         "effect": ""
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5178.png?v=1750608019889"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E7%B7%91%E3%82%A2%E3%82%A6%E3%83%AD%E3%83%A9.PNG?raw=true"
   },
   {
     "id": "aurora3",
@@ -349,7 +349,7 @@
         "effect": ""
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5179.png?v=1750608024338"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E6%B5%B4%E8%A1%A3%E3%82%A2%E3%82%A6%E3%83%AD%E3%83%A9.PNG?raw=true"
   },
   {
     "id": "alpha1",
@@ -393,7 +393,7 @@
         "effect": "自分のHPが回復する度に(再発動5秒)、味方全体の与ダメージを15秒間20.00%アップし、さらに60秒間攻撃力の100.00%の「シールド」を付与"
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5108.png?v=1750403858127"
+    "image": ""
   },
     {
     "id": "alpha2",
@@ -437,7 +437,7 @@
         "effect": "緑属性の味方が特技1か特技2を発動する度に(再発動3秒)、味方全体の与ダメージを10秒間7.00%アップし、さらに行動速度を10秒間15.00%アップ+敵全体の被ダメージを10秒間7.00%アップし、さらに回避補正を10秒間30.00%ダウン"
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5109.png?v=1750405770260"
+    "image": ""
   },
   {
     "id": "alpha3",
@@ -481,7 +481,7 @@
         "effect": "自分が回避をする度に(再発動3秒)、自分の回避補正を10秒間30.00%アップ+味方全体の攻撃力を10秒間10.00%アップし、さらに与ダメージを10秒間10.00%アップし、さらに行動速度を10秒間20.00%アップし、さらに10秒間攻撃力の100.00%「シールド」を付与"
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5102.png?v=1750398683911"
+    "image": ""
   },
   {
     "id": "alpha4",
@@ -525,7 +525,7 @@
         "effect": "WAVE開始時、青属性の味方全体の防御力を60秒間40.00%アップし、さらに与ダメージを60秒間20.00%アップし、さらに対象がエルフだった場合気絶耐性を100.00%アップ(永続)し、さらに出血耐性を100.00%アップ(永続)"
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5112.png?v=1750416485570"
+    "image": ""
   },
   {
     "id": "alpha5",
@@ -569,7 +569,7 @@
         "effect": ""
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5114.png?v=1750416710617"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/F%E3%82%A2%E3%83%AB%E3%83%95%E3%82%A1.PNG?raw=true"
   },
   {
     "id": "alpha6",
@@ -657,7 +657,7 @@
         "effect": "自分が味方のHPを回復する度に(再発動3秒)、緑属性の味方全体のクリティカル率を15秒間20.00%アップし、さらにクリティカル攻撃倍率を15秒間20.00%アップし、さらに与ダメージを15秒間30.00%アップし、さらに対象が七陰だった場合攻撃力を15秒間10.00%アップ"
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5113.png?v=1750416709663"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E3%83%88%E3%82%99%E3%83%AC%E3%82%B9%E3%82%A2%E3%83%AB%E3%83%95%E3%82%A1.PNG?raw=true"
   },
   {
     "id": "alpha8",
@@ -701,7 +701,7 @@
         "effect": ""
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5115.png?v=1750416714986"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E7%A7%81%E6%9C%8D%E3%82%A2%E3%83%AB%E3%83%95%E3%82%A1.PNG?raw=true"
   },
   {
     "id": "alpha9",
@@ -745,7 +745,7 @@
         "effect": ""
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/20241230_125906941.jpeg?v=1750419958260"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E3%83%8F%E3%82%99%E3%83%AC%E3%83%B3%E3%82%BF%E3%82%A4%E3%83%B3%E3%82%A2%E3%83%AB%E3%83%95%E3%82%A1.JPG?raw=true"
   },
   {
     "id": "alpha10",
@@ -789,7 +789,7 @@
         "effect": ""
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/Screenshot_20240504_202819_YouTube.jpeg?v=1750419966286"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E7%99%BD%E3%82%A2%E3%83%AB%E3%83%95%E3%82%A1.JPG?raw=true"
   },
   {
     "id": "alpha11",
@@ -833,7 +833,7 @@
         "effect": ""
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/20240711_215226.jpeg?v=1750419962373"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E6%B0%B4%E7%9D%80%E3%82%A2%E3%83%AB%E3%83%95%E3%82%A1.PNG?raw=true"
   },
   {
     "id": "alpha12",
@@ -877,7 +877,7 @@
         "effect": ""
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/20250417_015004870.jpeg?v=1750419976460"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E3%83%8F%E3%82%99%E3%83%8B%E3%83%BC%E3%82%A2%E3%83%AB%E3%83%95%E3%82%A1.JPG?raw=true"
   },
   {
     "id": "alpha13",
@@ -921,7 +921,7 @@
         "effect": ""
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5116.png?v=1750416718032"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E5%A4%96%E5%85%B8%E3%82%A2%E3%83%AB%E3%83%95%E3%82%A1.PNG?raw=true"
   },
   {
     "id": "alexia1",
@@ -965,7 +965,7 @@
         "effect": "味方の生存人数が5人を下回るまで、黄属性の味方全体の防御力を30.00%アップ(永続)し、さらに攻撃力を30.00%アップ(永続)し、さらに与ダメージを30.00%アップ(永続)し、さらに行動速度を30.00%アップ(永続)"
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5189.png?v=1750642118958"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E7%A7%81%E6%9C%8D%E3%82%A2%E3%83%AC%E3%82%AF%E3%82%B7%E3%82%A2.PNG?raw=true"
   },
   {
     "id": "alexia2",
@@ -1009,7 +1009,7 @@
         "effect": "自分がダメージを与える度に、自分の「オーバーヒール」を10.00%アップ(永続)し、さらに自分の与ダメージを60秒間20.00%アップ+緑属性の味方全体のHPを攻撃力の30.00%回復"
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5192.png?v=1750642150679"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E5%88%B6%E6%9C%8D%E3%82%A2%E3%83%AC%E3%82%AF%E3%82%B7%E3%82%A2.PNG?raw=true"
   },
   {
     "id": "alexia3",
@@ -1053,7 +1053,7 @@
         "effect": "自分がダメージを与える度に(再発動3秒)、敵全体の被ダメージを10秒間20.00%アップし、さらにクリティカル防御倍率を10秒間20.00%ダウン+自分の攻撃力を15秒間20.00%アップし、さらにクリティカル率を15秒間20.00%アップし、さらにクリティカル攻撃倍率を15秒間20.00%アップ"
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5187.png?v=1750642111613"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E3%82%AF%E3%83%AA%E3%82%B9%E3%83%9E%E3%82%B9%E3%82%A2%E3%83%AC%E3%82%AF%E3%82%B7%E3%82%A2.PNG?raw=true"
   },
   {
     "id": "alexia4",
@@ -1097,7 +1097,7 @@
         "effect": "自分が味方のHPを回復する度に(再発動3秒)、味方全体の攻撃力を10秒間10.00%アップし、さらに回復量補正を15秒間20.00%アップし、さらにSP上昇を15秒間10.00%アップ+自分が敵に状態異常を付与する度に(再発動3秒)、敵全体の防御力を10秒間15.00%ダウンし、さらに行動速度を10秒間15.00%ダウン"
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5191.png?v=1750642146082"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E3%83%8F%E3%82%99%E3%83%8B%E3%83%BC%E3%82%A2%E3%83%AC%E3%82%AF%E3%82%B7%E3%82%A2.PNG?raw=true"
   },
   {
     "id": "alexia5",
@@ -1141,7 +1141,7 @@
         "effect": ""
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5186.png?v=1750642103691"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E6%B0%B4%E7%9D%80%E3%82%A2%E3%83%AC%E3%82%AF%E3%82%B7%E3%82%A2.PNG?raw=true"
   },
   {
     "id": "alexia6",
@@ -1185,7 +1185,7 @@
         "effect": ""
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5185.png?v=1750642099725"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/F%E3%82%A2%E3%83%AC%E3%82%AF%E3%82%B7%E3%82%A2.PNG?raw=true"
   },
   {
     "id": "alexia7",
@@ -1229,7 +1229,7 @@
         "effect": ""
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5188.png?v=1750642113662"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E3%82%A2%E3%82%A4%E3%83%88%E3%82%99%E3%83%AB%E3%82%A2%E3%83%AC%E3%82%AF%E3%82%B7%E3%82%A2.PNG?raw=true"
   },
   {
     "id": "alexia8",
@@ -1278,7 +1278,7 @@
         "effect": "奥義発動時、自分の攻撃力を60秒間50.00%アップ"
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5184.png?v=1750642096485"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E9%AD%94%E4%BA%BA%E3%82%A2%E3%83%AC%E3%82%AF%E3%82%B7%E3%82%A2.PNG?raw=true"
   },
   {
     "id": "alexia9",
@@ -1322,7 +1322,7 @@
         "effect": ""
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5190.png?v=1750642140191"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E5%A4%96%E5%85%B8%E3%82%A2%E3%83%AC%E3%82%AF%E3%82%B7%E3%82%A2.PNG?raw=true"
   },
   {
     "id": "annerose1",
@@ -1366,7 +1366,7 @@
         "effect": ""
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5198.png?v=1750675753132"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E8%B5%A4%E3%82%A2%E3%83%B3%E3%83%8D%E3%83%AD%E3%83%BC%E3%82%BB%E3%82%99.PNG?raw=true"
   },
   {
     "id": "annerose2",
@@ -1410,7 +1410,7 @@
         "effect": ""
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5199.png?v=1750675843456"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E9%BB%84%E3%82%A2%E3%83%B3%E3%83%8D%E3%83%AD%E3%83%BC%E3%82%BB%E3%82%99.PNG?raw=true"
   },
   {
     "id": "epsilon1",
@@ -1454,7 +1454,7 @@
         "effect": "自分に状態異常がかかる度に、3回まで味方全体に15秒間攻撃力の100.00%の「シールド」を付与し(再発動3秒)し、さらに対象が赤属性だった場合、状態異常を5個解除(再発動3秒)"
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5223.png?v=1750680149185"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E8%B5%A4%E5%A3%BA%E3%82%A4%E3%83%95%E3%82%9A%E3%82%B7%E3%83%AD%E3%83%B3.PNG?raw=true"
   },
     {
     "id": "epsilon2",
@@ -1498,7 +1498,7 @@
         "effect": "奥義発動時、赤属性の味方全体の行動速度を60秒間40.00%アップし、さらに対象がアタッカーだった場合攻撃力を60秒間40.00%アップ+自分の攻撃力を60秒間編成されているエルフの数×10.00%アップ"
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5222.png?v=1750680154610"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E8%B5%A4%E3%83%92%E3%82%9A%E3%82%A2%E3%83%8E%E3%82%A4%E3%83%95%E3%82%9A%E3%82%B7%E3%83%AD%E3%83%B3.PNG?raw=true"
   },
   {
     "id": "epsilon3",
@@ -1542,7 +1542,7 @@
         "effect": "奥義発動時、味方全体の与ダメージを10秒間50.00%アップし、さらに対象がシャドウガーデンだった場合SPを200回復"
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5226.png?v=1750680166172"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E9%9D%92%E5%AD%90%E3%82%A4%E3%83%95%E3%82%9A%E3%82%B7%E3%83%AD%E3%83%B3.PNG?raw=true"
   },
   {
     "id": "epsilon4",
@@ -1586,7 +1586,7 @@
         "effect": "特技2発動時、敵全体の防御力を10秒間20.00%ダウンし、さらに5秒間の封印、3秒間の気絶・睡眠をそれぞれ30%の確率で付与"
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5227.png?v=1750680169160"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E3%83%8F%E3%82%99%E3%83%AC%E3%83%B3%E3%82%BF%E3%82%A4%E3%83%B3%E3%82%A4%E3%83%95%E3%82%9A%E3%82%B7%E3%83%AD%E3%83%B3.PNG?raw=true"
   },
   {
     "id": "epsilon5",
@@ -1630,7 +1630,7 @@
         "effect": ""
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/804D1B83-B751-4546-92AA-52FB17E67B6A.png?v=1750419977131"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/F%E3%82%A4%E3%83%95%E3%82%9A%E3%82%B7%E3%83%AD%E3%83%B3.PNG?raw=true"
   },
   {
     "id": "epsilon6",
@@ -1674,7 +1674,7 @@
         "effect": ""
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5225.png?v=1750680156188"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E6%B0%B4%E7%9D%80%E3%82%A4%E3%83%95%E3%82%9A%E3%82%B7%E3%83%AD%E3%83%B3.PNG?raw=true"
   },
   {
     "id": "epsilon7",
@@ -1718,7 +1718,7 @@
         "effect": ""
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5231.png?v=1750680173646"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E3%82%B7%E3%83%AD%E3%83%B3.PNG?raw=true"
   },
   {
     "id": "epsilon8",
@@ -1762,7 +1762,7 @@
         "effect": ""
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5232.png?v=1750680179058"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E6%AD%A3%E6%9C%88%E3%82%A4%E3%83%95%E3%82%9A%E3%82%B7%E3%83%AD%E3%83%B3.PNG?raw=true"
   },
   {
     "id": "epsilon9",
@@ -1806,7 +1806,7 @@
         "effect": ""
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5207.jpeg?v=1750676039388"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E7%99%BD%E3%82%A4%E3%83%95%E3%82%9A%E3%82%B7%E3%83%AD%E3%83%B3.JPG?raw=true"
   },
   {
     "id": "epsilon10",
@@ -1850,7 +1850,7 @@
         "effect": ""
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5233.png?v=1750680182874"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E3%82%AF%E3%83%AA%E3%82%B9%E3%83%9E%E3%82%B9%E3%82%A4%E3%83%95%E3%82%9A%E3%82%B7%E3%83%AD%E3%83%B3.PNG?raw=true"
   },
   {
     "id": "epsilon11",
@@ -1894,7 +1894,7 @@
         "effect": ""
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5204.png?v=1750676031434"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E5%88%B6%E6%9C%8D%E3%82%A4%E3%83%95%E3%82%9A%E3%82%B7%E3%83%AD%E3%83%B3.PNG?raw=true"
   },
   {
     "id": "epsilon12",
@@ -1938,7 +1938,7 @@
         "effect": ""
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5224.png?v=1750680154043"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E3%83%88%E3%82%99%E3%83%AC%E3%82%B9%E3%82%A4%E3%83%95%E3%82%9A%E3%82%B7%E3%83%AD%E3%83%B3.PNG?raw=true"
   },
   {
     "id": "Eta1",
