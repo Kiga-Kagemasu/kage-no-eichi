@@ -3796,7 +3796,7 @@
         "effect": ""
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5384.png?v=1751364114512"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E9%9D%92%E3%82%B7%E3%83%A3%E3%83%88%E3%82%99%E3%82%A6.PNG?raw=true"
   },
   {
     "id": "shadow2",
@@ -3840,12 +3840,12 @@
         "effect": ""
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5385.png?v=1751364124561"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E7%B7%91%E3%82%B7%E3%83%A3%E3%83%88%E3%82%99%E3%82%A6.PNG?raw=true"
   },
   {
     "id": "shadow3",
     "name": "シャドウ[月夜を統べる陰]",
-    "aliases": ["Fチビ青シャドウ","F幼少青シャドウ","F子供青シャドウ","エフチビ青シャドウ","エフ幼少青シャドウ","エフ子供青シャドウ","フェスチビ青シャドウ","フェス幼少青シャドウ","フェス子供青シャドウ","ライジングシャドウ"],
+    "aliases": ["Fチビ青シャドウ","F幼少青シャドウ","F子供青シャドウ","エフチビ青シャドウ","エフ幼少青シャドウ","エフ子供青シャドウ","フェスチビ青シャドウ","フェス幼少青シャドウ","フェス子供青シャドウ","ライジングシャドウ","ライシャ"],
     "attribute": "青",
     "role": "アタッカー",
     "position": 311,
@@ -3884,7 +3884,7 @@
         "effect": ""
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5383.png?v=1751364120716"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E3%83%A9%E3%82%A4%E3%82%B7%E3%82%99%E3%83%B3%E3%82%AF%E3%82%99%E3%82%B7%E3%83%A3%E3%83%88%E3%82%99%E3%82%A6.PNG?raw=true"
   },
   {
     "id": "shadow4",
@@ -3928,7 +3928,7 @@
         "effect": ""
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5386.png?v=1751364138166"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E3%82%A2%E3%82%AD%E3%82%B7%E3%83%A3.PNG?raw=true"
   },
   
   
@@ -4009,7 +4009,7 @@
         "effect": ""
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5200.png?v=1750676002463"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E3%82%A4%E3%83%95%E3%82%9A%E3%83%98%E3%82%99.PNG?raw=true"
   },
   {
     "id": "tag1",
@@ -4053,7 +4053,7 @@
         "effect": ""
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5200.png?v=1750676002463"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E3%82%A4%E3%83%95%E3%82%9A%E3%83%98%E3%82%99.PNG?raw=true"
   },
   {
     "id": "tag2",
@@ -4097,7 +4097,7 @@
         "effect": ""
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5175.png?v=1750603826894"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E3%82%B7%E3%83%A3%E3%83%88%E3%82%99%E3%83%AD%E3%83%A9.PNG?raw=true"
   },
   {
     "id": "tag2",
@@ -4141,7 +4141,7 @@
         "effect": ""
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5175.png?v=1750603826894"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E3%82%B7%E3%83%A3%E3%83%88%E3%82%99%E3%83%AD%E3%83%A9.PNG?raw=true"
   },
   {
     "id": "tag3",
@@ -4185,7 +4185,7 @@
         "effect": ""
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5307.png?v=1751023552785"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E3%82%BB%E3%82%99%E3%83%AB%E3%82%BF.PNG?raw=true"
   },
   {
     "id": "tag3",
@@ -4229,7 +4229,7 @@
         "effect": ""
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5307.png?v=1751023552785"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E3%82%BB%E3%82%99%E3%83%AB%E3%82%BF.PNG?raw=true"
   },
   {
     "id": "hololive1",
@@ -4317,7 +4317,7 @@
         "effect": "WAVE開始時、自分のクリティカル率を60秒間50.00%アップし、さらに60秒間「オーバードライブ(クリティカル率)」(最大30.00%)を付与し、さらに行動速度を60秒間50.00%アップ+自分が奥義を発動した時、自分のクリティカル率を60秒間50.00%アップ+敵全体の防御力を15秒間20.00%ダウンし、さらに300.00%のダメージ"
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5215.jpeg?v=1750676138869"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E9%B7%B9.JPG?raw=true"
   },
   {
     "id": "hololive3",
@@ -4361,7 +4361,7 @@
         "effect": ""
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5212.jpeg?v=1750676112260"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E3%83%A9%E3%83%95%E3%82%9A%E3%83%A9%E3%82%B9.JPG?raw=true"
   },
   {
     "id": "hololive4",
@@ -4405,7 +4405,7 @@
         "effect": ""
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5208.jpeg?v=1750676060820"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E3%83%9B%E3%83%AD%E3%83%A9%E3%82%A4%E3%83%95%E3%82%99%E9%85%92.JPG?raw=true"
   },
   {
     "id": "collab1",
@@ -4449,7 +4449,7 @@
         "effect": "自分がクリティカルを発生させる度に、自分のHPを攻撃力の50.00%回復"
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5216.jpeg?v=1750676145223"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E3%82%B5%E3%83%B3%E3%83%A9%E3%82%AF.JPG?raw=true"
   },
   {
     "id": "collab2",
@@ -4493,7 +4493,7 @@
         "effect": ""
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5306.png?v=1751014297789"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E3%83%98%E3%82%9A%E3%83%B3%E3%82%B7%E3%83%AB%E3%82%B3%E3%82%99%E3%83%B3.PNG?raw=true"
   },
   {
     "id": "collab3",
@@ -4537,7 +4537,7 @@
         "effect": ""
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5217.jpeg?v=1750676152097"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E3%82%AA%E3%82%A4%E3%82%AB%E3%83%83%E3%83%84%E3%82%A9.JPG?raw=true"
   },
   {
     "id": "collab4",
@@ -4581,7 +4581,7 @@
         "effect": ""
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5214.jpeg?v=1750676132248"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E6%A3%AE%E7%BE%85.JPG?raw=true"
   },
   {
     "id": "collab5",
@@ -4625,7 +4625,7 @@
         "effect": ""
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5305.png?v=1751014300962"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E7%92%B0.PNG?raw=true"
   },
   {
     "id": "collab6",
@@ -4669,7 +4669,7 @@
         "effect": ""
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5304.png?v=1751014300788"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E7%B4%85%E4%B8%B8.PNG?raw=true"
   },
   {
     "id": "collab7",
@@ -4713,7 +4713,7 @@
         "effect": ""
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5210.jpeg?v=1750676102281"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E3%82%A8%E3%83%9F%E3%83%AA%E3%82%A2.JPG?raw=true"
   },
   {
     "id": "collab8",
@@ -4757,6 +4757,6 @@
         "effect": ""
       }
     },
-    "image": "https://cdn.glitch.global/4420b4b4-ccbe-4570-89f2-bc713e3392de/IMG_5211.jpeg?v=1750676107339"
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E3%83%AC%E3%83%A0.JPG?raw=true"
   }
 ]
