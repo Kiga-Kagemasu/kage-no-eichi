@@ -4026,6 +4026,11 @@
 
 
 
+
+
+
+
+  
   
   {
     "id": "zeta2",
@@ -4384,6 +4389,496 @@
     },
     "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E9%AD%94%E4%BA%BA%E3%82%BB%E3%82%99%E3%83%BC%E3%82%BF.PNG?raw=true"
   },
+  {
+    "id": "delta1",
+    "name": "デルタ[獲ったのです！]",
+    "aliases": ["赤幼少デルタ","赤子供デルタ","赤子デルタ"],
+    "attribute": "赤",
+    "role": "アタッカー",
+    "position": あ,
+    "awakening_order": ["", "", "", "", ""],
+    "skills": {
+      "奥義": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      },
+      "特技1": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      },
+      "特技2": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      },
+      "特殊": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      }
+    },
+    "combo": "",
+    "group": [""],
+    "magitools": {
+      "normal": {
+        "name": "",
+        "effect": ""
+      },
+      "ss_plus": {
+        "name": "",
+        "effect": ""
+      }
+    },
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E8%B5%A4%E5%AD%90%E3%83%86%E3%82%99%E3%83%AB%E3%82%BF.PNG?raw=true"
+  },
+  {
+    "id": "delta2",
+    "name": "デルタ[ボス待ってた！]",
+    "aliases": ["緑幼少デルタ","緑子供デルタ","緑子デルタ"],
+    "attribute": "緑",
+    "role": "タンク",
+    "position": あ,
+    "awakening_order": ["", "", "", "", ""],
+    "skills": {
+      "奥義": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      },
+      "特技1": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      },
+      "特技2": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      },
+      "特殊": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      }
+    },
+    "combo": "",
+    "group": [""],
+    "magitools": {
+      "normal": {
+        "name": "",
+        "effect": ""
+      },
+      "ss_plus": {
+        "name": "",
+        "effect": ""
+      }
+    },
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E7%B7%91%E5%AD%90%E3%83%86%E3%82%99%E3%83%AB%E3%82%BF.PNG?raw=true"
+  },
+  {
+    "id": "delta3",
+    "name": "デルタ[これが獣人二板流！]",
+    "aliases": ["正月デルタ","振袖デルタ","晴着デルタ"],
+    "attribute": "緑",
+    "role": "アタッカー",
+    "position": あ,
+    "awakening_order": ["", "", "", "", ""],
+    "skills": {
+      "奥義": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      },
+      "特技1": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      },
+      "特技2": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      },
+      "特殊": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      }
+    },
+    "combo": "",
+    "group": [""],
+    "magitools": {
+      "normal": {
+        "name": "",
+        "effect": ""
+      },
+      "ss_plus": {
+        "name": "",
+        "effect": ""
+      }
+    },
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E6%AD%A3%E6%9C%88%E3%83%86%E3%82%99%E3%83%AB%E3%82%BF.PNG?raw=true"
+  },
+  {
+    "id": "delta4",
+    "name": "デルタ[小さな猛獣]",
+    "aliases": ["青幼少デルタ","青子デルタ"],
+    "attribute": "青",
+    "role": "アタッカー",
+    "position": あ,
+    "awakening_order": ["", "", "", "", ""],
+    "skills": {
+      "奥義": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      },
+      "特技1": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      },
+      "特技2": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      },
+      "特殊": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      }
+    },
+    "combo": "",
+    "group": [""],
+    "magitools": {
+      "normal": {
+        "name": "",
+        "effect": ""
+      },
+      "ss_plus": {
+        "name": "",
+        "effect": ""
+      }
+    },
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E9%9D%92%E5%AD%90%E3%83%86%E3%82%99%E3%83%AB%E3%82%BF.PNG?raw=true"
+  },
+  {
+    "id": "delta5",
+    "name": "デルタ[七陰第四席]",
+    "aliases": ["Fデルタ","フェスデルタ","エフデルタ"],
+    "attribute": "緑",
+    "role": "アタッカー",
+    "position": あ,
+    "awakening_order": ["", "", "", "", ""],
+    "skills": {
+      "奥義": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      },
+      "特技1": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      },
+      "特技2": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      },
+      "特殊": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      }
+    },
+    "combo": "",
+    "group": [""],
+    "magitools": {
+      "normal": {
+        "name": "",
+        "effect": ""
+      },
+      "ss_plus": {
+        "name": "",
+        "effect": ""
+      }
+    },
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/F%E3%83%86%E3%82%99%E3%83%AB%E3%82%BF.PNG?raw=true"
+  },
+  {
+    "id": "delta6",
+    "name": "デルタ[わんぱくウィッチ]",
+    "aliases": ["ハロウィンデルタ","ハロデルタ"],
+    "attribute": "黄",
+    "role": "アタッカー",
+    "position": あ,
+    "awakening_order": ["", "", "", "", ""],
+    "skills": {
+      "奥義": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      },
+      "特技1": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      },
+      "特技2": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      },
+      "特殊": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      }
+    },
+    "combo": "",
+    "group": [""],
+    "magitools": {
+      "normal": {
+        "name": "",
+        "effect": ""
+      },
+      "ss_plus": {
+        "name": "",
+        "effect": ""
+      }
+    },
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E3%83%8F%E3%83%AD%E3%82%A6%E3%82%A3%E3%83%B3%E3%83%86%E3%82%99%E3%83%AB%E3%82%BF.JPG?raw=true"
+  },
+  {
+    "id": "delta7",
+    "name": "デルタ[やんちゃ女子高生]",
+    "aliases": ["JKデルタ","制服デルタ"],
+    "attribute": "青",
+    "role": "アタッカー",
+    "position": あ,
+    "awakening_order": ["", "", "", "", ""],
+    "skills": {
+      "奥義": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      },
+      "特技1": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      },
+      "特技2": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      },
+      "特殊": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      }
+    },
+    "combo": "",
+    "group": [""],
+    "magitools": {
+      "normal": {
+        "name": "",
+        "effect": ""
+      },
+      "ss_plus": {
+        "name": "",
+        "effect": ""
+      }
+    },
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E5%88%B6%E6%9C%8D%E3%83%86%E3%82%99%E3%83%AB%E3%82%BF.PNG?raw=true"
+  },
+  {
+    "id": "delta8",
+    "name": "デルタ[魔人化第四席]",
+    "aliases": ["魔人デルタ","魔デルタ","マルタ"],
+    "attribute": "緑",
+    "role": "アタッカー",
+    "position": ,
+    "awakening_order": ["", "", "", "", ""],
+    "skills": {
+      "奥義": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      },
+      "特技1": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      },
+      "特技2": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      },
+      "特殊": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      },
+      "通常": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      }
+    },
+    "combo": "",
+    "group": [""],
+    "magitools": {
+      "normal": {
+        "name": "",
+        "effect": ""
+      },
+      "normal2": {
+        "name": "",
+        "effect": ""
+      }
+    },
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E9%AD%94%E4%BA%BA%E3%83%86%E3%82%99%E3%83%AB%E3%82%BF.PNG?raw=true"
+  },
+  {
+    "id": "delta9",
+    "name": "デルタ[お出かけ、だいすき！]",
+    "aliases": ["私服デルタ"],
+    "attribute": "青",
+    "role": "タンク",
+    "position": あ,
+    "awakening_order": ["", "", "", "", ""],
+    "skills": {
+      "奥義": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      },
+      "特技1": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      },
+      "特技2": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      },
+      "特殊": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      }
+    },
+    "combo": "",
+    "group": [""],
+    "magitools": {
+      "normal": {
+        "name": "",
+        "effect": ""
+      },
+      "ss_plus": {
+        "name": "",
+        "effect": ""
+      }
+    },
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E7%A7%81%E6%9C%8D%E3%83%86%E3%82%99%E3%83%AB%E3%82%BF.PNG?raw=true"
+  },
+  {
+    "id": "delta10",
+    "name": "デルタ[アグレッシブメイド]",
+    "aliases": ["メイドデルタ"],
+    "attribute": "青",
+    "role": "アタッカー",
+    "position": あ,
+    "awakening_order": ["", "", "", "", ""],
+    "skills": {
+      "奥義": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      },
+      "特技1": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      },
+      "特技2": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      },
+      "特殊": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      }
+    },
+    "combo": "",
+    "group": [""],
+    "magitools": {
+      "normal": {
+        "name": "",
+        "effect": ""
+      },
+      "ss_plus": {
+        "name": "",
+        "effect": ""
+      }
+    },
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E3%83%A1%E3%82%A4%E3%83%88%E3%82%99%E3%83%86%E3%82%99%E3%83%AB%E3%82%BF.PNG?raw=true"
+  },
+  {
+    "id": "delta11",
+    "name": "デルタ[夏、大満喫なのです！]",
+    "aliases": ["水着デルタ"],
+    "attribute": "青",
+    "role": "アタッカー",
+    "position": あ,
+    "awakening_order": ["", "", "", "", ""],
+    "skills": {
+      "奥義": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      },
+      "特技1": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      },
+      "特技2": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      },
+      "特殊": {
+        "name": "",
+        "base": "",
+        "awakened": ""
+      }
+    },
+    "combo": "",
+    "group": [""],
+    "magitools": {
+      "normal": {
+        "name": "",
+        "effect": ""
+      },
+      "ss_plus": {
+        "name": "",
+        "effect": ""
+      }
+    },
+    "image": "https://github.com/Kiga-Kagemasu/kage-no-eichi/blob/main/app/images/%E6%B0%B4%E7%9D%80%E3%83%86%E3%82%99%E3%83%AB%E3%82%BF.PNG?raw=true"
+  },
+  
 
   
   
