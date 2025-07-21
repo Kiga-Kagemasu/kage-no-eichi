@@ -73,7 +73,6 @@ module.exports = {
           if (c.magitools.normal && c.magitools.normal.name) {
             embed.addFields({
               name: '魔道具①',
-              { name: '\u200b', value: '\u200b', inline: false },
               value: `【${c.magitools.normal.name}】\n${c.magitools.normal.effect}`
             });
           }
