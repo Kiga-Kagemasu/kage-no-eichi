@@ -1,6 +1,10 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const data = require('../characters.json');
 
+function escapeRegex(str) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('1_キャラ検索')
@@ -40,9 +44,13 @@ module.exports = {
           .setImage(c.image)
           .addFields(
             { name: '魔力覚醒順', value: c.awakening_order.join(" → "), inline: false },
+            { name: '\u200b', value: '\u200b', inline: false },
             { name: '奥義', value: `【${c.skills["奥義"].name}】\n${c.skills["奥義"].base}\n【覚醒】${c.skills["奥義"].awakened}` },
+            { name: '\u200b', value: '\u200b', inline: false },
             { name: '特技1', value: `【${c.skills["特技1"].name}】\n${c.skills["特技1"].base}\n【覚醒】${c.skills["特技1"].awakened}` },
+            { name: '\u200b', value: '\u200b', inline: false },
             { name: '特技2', value: `【${c.skills["特技2"].name}】\n${c.skills["特技2"].base}\n【覚醒】${c.skills["特技2"].awakened}` },
+            { name: '\u200b', value: '\u200b', inline: false },
             { name: '特殊能力', value: `【${c.skills["特殊"].name}】\n${c.skills["特殊"].base}\n【覚醒】${c.skills["特殊"].awakened}` }
           );
 
@@ -50,11 +58,13 @@ module.exports = {
         if (c.awakening_order.includes("通常") && c.skills["通常"]) {
           embed.addFields({
             name: '通常',
+            { name: '\u200b', value: '\u200b', inline: false },
             value: `【${c.skills["通常"].name}】\n${c.skills["通常"].base}\n【覚醒】${c.skills["通常"].awakened}`
           });
         }
 
         embed.addFields(
+          { name: '\u200b', value: '\u200b', inline: false },
           { name: 'コンボ', value: c.combo || '―' },
           { name: 'グループ', value: (c.group || []).join(', ') || '―' }
         );
@@ -64,6 +74,7 @@ module.exports = {
           if (c.magitools.normal && c.magitools.normal.name) {
             embed.addFields({
               name: '魔道具①',
+              { name: '\u200b', value: '\u200b', inline: false },
               value: `【${c.magitools.normal.name}】\n${c.magitools.normal.effect}`
             });
           }
