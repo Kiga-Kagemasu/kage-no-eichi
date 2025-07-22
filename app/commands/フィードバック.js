@@ -5,7 +5,7 @@ const FEEDBACK_CHANNEL_ID = '1397283435835560149';
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('フィードバック')
-    .setDescription('不具合や要望を匿名で送信します')
+    .setDescription('不具合やミス、要望など、匿名で送信します')
     .addStringOption(option =>
       option.setName('内容')
         .setDescription('報告内容を入力してください')
@@ -27,7 +27,7 @@ module.exports = {
     }
 
     const messageOptions = {
-      content: `📩 **フィードバック受信**\n${content}`,
+      content: ` **フィードバック受信**\n${content}`,
     };
 
     if (image) {
@@ -36,6 +36,6 @@ module.exports = {
 
     await channel.send(messageOptions);
 
-    await interaction.reply({ content: '匿名でフィードバックを送信しました。ありがとうございました！', ephemeral: true });
+    await interaction.reply({ content: 'フィードバックを送信しました。ありがとうございました！', ephemeral: true });
   }
 };
