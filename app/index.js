@@ -14,7 +14,10 @@ const {
 const characters = require('./characters.json');
 
 function normalize(str) {
-  return str ? str.normalize('NFKC') : '';
+  if (!str) return '';
+  return str
+    .normalize('NFKC')
+    .replace(/[\uFF65-\uFF9F]/g, s => String.fromCharCode(s.charCodeAt(0) - 0xFEC0));
 }
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
