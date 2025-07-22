@@ -19,7 +19,7 @@ module.exports = {
 
   async execute(interaction) {
     const content = interaction.options.getString('内容');
-    const image = interaction.options.getAttachment('画像');
+    const image = interaction.options.getAttachment('添付');
     const channel = await interaction.client.channels.fetch(FEEDBACK_CHANNEL_ID);
 
     if (!channel || !channel.isTextBased()) {
