@@ -20,11 +20,11 @@ module.exports = {
     ),
 
   async execute(interaction) {
-    await interaction.deferReply();
-    
+    await interaction.deferReply(); 
+
     const keyword = normalize(interaction.options.getString('名前'));
     const regex = new RegExp(escapeRegex(keyword), 'i');
-    
+
     const matched = data.filter(c => {
       const nameNorm = normalize(c.name);
       const aliasNorms = (c.aliases || []).map(a => normalize(a));
@@ -37,7 +37,7 @@ module.exports = {
     });
 
     if (matched.length === 0) {
-      return interaction.reply('該当キャラが見つかりません。');
+      return interaction.editReply('該当キャラが見つかりません。');
     }
 
     const embeds = [];
@@ -68,7 +68,6 @@ module.exports = {
             { name: '特殊能力', value: `【${c.skills["特殊"].name}】\n${c.skills["特殊"].base}\n【覚醒】${c.skills["特殊"].awakened}` }
           );
 
-        // 通常スキル（魔人化キャラなど）の表示
         if (c.awakening_order.includes("通常") && c.skills["通常"]) {
           embed.addFields({
             name: '通常',
@@ -83,20 +82,19 @@ module.exports = {
           { name: 'グループ', value: (c.group || []).join(', ') || '―' }
         );
 
-        // 魔道具の表示
         if (c.magitools) {
-          if (c.magitools.normal && c.magitools.normal.name) {
+          if (c.magitools.normal?.name) {
             embed.addFields({
               name: '魔道具①',
               value: `【${c.magitools.normal.name}】\n${c.magitools.normal.effect}`
             });
           }
-          if (c.magitools.normal2 && c.magitools.normal2.name) {
+          if (c.magitools.normal2?.name) {
             embed.addFields({
               name: '魔道具②',
               value: `【${c.magitools.normal2.name}】\n${c.magitools.normal2.effect}`
             });
-          } else if (c.magitools.ss_plus && c.magitools.ss_plus.name) {
+          } else if (c.magitools.ss_plus?.name) {
             embed.addFields({
               name: '魔道具（SS+）',
               value: `【${c.magitools.ss_plus.name}】\n${c.magitools.ss_plus.effect}`
