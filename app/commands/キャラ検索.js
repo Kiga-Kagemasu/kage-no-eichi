@@ -58,13 +58,13 @@ module.exports = {
           .setImage(c.image)
           .addFields(
             { name: '魔力覚醒順', value: c.awakening_order.join(" → "), inline: false },
-            { name: '\u200b', value: '\u200b', inline: false },
+            { name: '\u200b\u200b', value: '\u200b\u200b', inline: false },
             { name: '奥義', value: `【${c.skills["奥義"].name}】\n${c.skills["奥義"].base}\n【覚醒】${c.skills["奥義"].awakened}` },
-            { name: '\u200b', value: '\u200b', inline: false },
+            { name: '\u200b\u200b', value: '\u200b\u200b', inline: false },
             { name: '特技1', value: `【${c.skills["特技1"].name}】\n${c.skills["特技1"].base}\n【覚醒】${c.skills["特技1"].awakened}` },
-            { name: '\u200b', value: '\u200b', inline: false },
+            { name: '\u200b\u200b', value: '\u200b\u200b', inline: false },
             { name: '特技2', value: `【${c.skills["特技2"].name}】\n${c.skills["特技2"].base}\n【覚醒】${c.skills["特技2"].awakened}` },
-            { name: '\u200b', value: '\u200b', inline: false },
+            { name: '\u200b\u200b', value: '\u200b\u200b', inline: false },
             { name: '特殊能力', value: `【${c.skills["特殊"].name}】\n${c.skills["特殊"].base}\n【覚醒】${c.skills["特殊"].awakened}` }
           );
 
@@ -76,9 +76,9 @@ module.exports = {
         }
 
         embed.addFields(
-          { name: '\u200b', value: '\u200b', inline: false },
+          { name: '\u200b\u200b', value: '\u200b\u200b', inline: false },
           { name: 'コンボ', value: c.combo || '―' },
-          { name: '\u200b', value: '\u200b', inline: false },
+          { name: '\u200b\u200b', value: '\u200b\u200b', inline: false },
           { name: 'グループ', value: (c.group || []).join(', ') || '―' }
         );
 
