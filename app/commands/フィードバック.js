@@ -5,7 +5,7 @@ const FEEDBACK_CHANNEL_ID = '1397283435835560149';
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('8_フィードバック')
-    .setDescription('不具合やミス、要望など、匿名で送信します')
+    .setDescription('botの不具合やミス、要望など、匿名で送信します')
     .addStringOption(option =>
       option.setName('内容')
         .setDescription('報告内容を入力してください')
