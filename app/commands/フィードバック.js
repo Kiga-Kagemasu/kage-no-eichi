@@ -1,6 +1,6 @@
 const { SlashCommandBuilder, AttachmentBuilder } = require('discord.js');
 
-const FEEDBACK_CHANNEL_ID = 1397283435835560149
+const FEEDBACK_CHANNEL_ID = '1397283435835560149';
 
 module.exports = {
   data: new SlashCommandBuilder()
