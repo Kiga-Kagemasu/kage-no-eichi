@@ -20,18 +20,19 @@ module.exports = {
     ),
 
   async execute(interaction) {
-    const keyword = interaction.options.getString('名前');
-    const regex = new RegExp(keyword, 'i');
-    const matched = data.filter(c =>
-       const nameNorm = normalize(c.name);
-      const aliasNorms = (c.aliases || []).map(a => normalize(a));
-      return (
-        nameNorm === keyword ||
-        aliasNorms.includes(keyword) ||
-        regex.test(nameNorm) ||
-        aliasNorms.some(a => regex.test(a))
-      );
-    });
+    const keyword = normalize(interaction.options.getString('名前'));
+const regex = new RegExp(escapeRegex(keyword), 'i');
+
+const matched = data.filter(c => {
+  const nameNorm = normalize(c.name);
+  const aliasNorms = (c.aliases || []).map(a => normalize(a));
+  return (
+    nameNorm === keyword ||
+    aliasNorms.includes(keyword) ||
+    regex.test(nameNorm) ||
+    aliasNorms.some(a => regex.test(a))
+  );
+});
 
     if (matched.length === 0) {
       return interaction.reply('該当キャラが見つかりません。');
