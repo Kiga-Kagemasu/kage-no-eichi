@@ -5,6 +5,10 @@ function escapeRegex(str) {
   return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
+function normalize(str) {
+  return str.normalize('NFKC');
+}
+
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('1_キャラ検索')
@@ -19,8 +23,15 @@ module.exports = {
     const keyword = interaction.options.getString('名前');
     const regex = new RegExp(keyword, 'i');
     const matched = data.filter(c =>
-      regex.test(c.name) || (c.aliases && c.aliases.some(alias => regex.test(alias)))
-    );
+       const nameNorm = normalize(c.name);
+      const aliasNorms = (c.aliases || []).map(a => normalize(a));
+      return (
+        nameNorm === keyword ||
+        aliasNorms.includes(keyword) ||
+        regex.test(nameNorm) ||
+        aliasNorms.some(a => regex.test(a))
+      );
+    });
 
     if (matched.length === 0) {
       return interaction.reply('該当キャラが見つかりません。');
@@ -44,6 +55,7 @@ module.exports = {
           .setImage(c.image)
           .addFields(
             { name: '魔力覚醒順', value: c.awakening_order.join(" → "), inline: false },
+            { name: '―', value: '―', inline: false },
             { name: '奥義', value: `【${c.skills["奥義"].name}】\n${c.skills["奥義"].base}\n【覚醒】${c.skills["奥義"].awakened}` },
             { name: '特技1', value: `【${c.skills["特技1"].name}】\n${c.skills["特技1"].base}\n【覚醒】${c.skills["特技1"].awakened}` },
             { name: '特技2', value: `【${c.skills["特技2"].name}】\n${c.skills["特技2"].base}\n【覚醒】${c.skills["特技2"].awakened}` },
@@ -59,6 +71,7 @@ module.exports = {
         }
 
         embed.addFields(
+          { name: '―', value: '―', inline: false },
           { name: 'コンボ', value: c.combo || '―' },
           { name: 'グループ', value: (c.group || []).join(', ') || '―' }
         );
