@@ -12,8 +12,8 @@ module.exports = {
         .setRequired(true)
     )
     .addAttachmentOption(option =>
-      option.setName('画像')
-        .setDescription('任意で画像を添付できます')
+      option.setName('添付')
+        .setDescription('任意で画像や動画を添付できます')
         .setRequired(false)
     ),
 
