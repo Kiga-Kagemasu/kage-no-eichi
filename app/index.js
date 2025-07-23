@@ -84,7 +84,7 @@ client.on('interactionCreate', async interaction => {
 
           embed.addFields(
             { name: '\u200b', value: '\u200b', inline: false },
-            { name: 'コンボ', value: c.combo || '―' },
+            { name: 'コンボ', value: c.combo || '―' }
           );
 
           if (c.magitools) {
