@@ -61,6 +61,9 @@ client.on('interactionCreate', async interaction => {
             .setColor(0x999999)
             .setImage(c.image)
             .addFields(
+              { name: '\u200b', value: '\u200b', inline: false },
+              { name: 'グループ', value: (c.group || []).join(', ') || '―' },
+              { name: '\u200b', value: '\u200b', inline: false },
               { name: '魔力覚醒順', value: c.awakening_order.join(" → ") },
               { name: '\u200b', value: '\u200b', inline: false },
               { name: '奥義', value: `【${c.skills["奥義"].name}】\n${c.skills["奥義"].base}\n【覚醒】${c.skills["奥義"].awakened}` },
@@ -82,8 +85,6 @@ client.on('interactionCreate', async interaction => {
           embed.addFields(
             { name: '\u200b', value: '\u200b', inline: false },
             { name: 'コンボ', value: c.combo || '―' },
-            { name: '\u200b', value: '\u200b', inline: false },
-            { name: 'グループ', value: (c.group || []).join(', ') || '―' }
           );
 
           if (c.magitools) {
